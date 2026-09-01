@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제주국제자유도시개발센터 우울·불안·스트레스 검사 | 마이카운슬러</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* 브랜드 색상 — 기관별 배포 시 아래 값만 교체하면 전체 테마가 바뀝니다 */
+      --teal-50: #E9F7F5;
+      --teal-100: #BEE7E2;
+      --teal-400: #0070BD;
+      --teal-600: #00548E;
+      --teal-800: #00548E;
+      --gray-50: #F5F6F7;
+      --gray-100: #E9EAEB;
+      --gray-400: #9A9C9E;
+      --gray-600: #4B4D4F;
+      --gray-800: #2E2F31;
+      --green-400: #6EB92C;
+      --green-600: #52891F;
+      --green-50: #EDF7E0;
+      --amber-400: #BA7517;
+      --red-400: #E24B4A;
+      --red-600: #A32D2D;
+      --bg: #F4F5F6;
+      --card: #FFFFFF;
+      --text-primary: #2E2F31;
+      --text-secondary: #58595B;
+      --text-muted: #8A8C8E;
+      --border: #DEDFE1;
+      --accent: #0070BD;
+      --accent-light: #E0EEF7;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    /* Header */
+    .site-header {
+      --logo-h: 40px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.15rem 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .logo-org-host {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      height: var(--logo-h);
+      width: 140px;
+      overflow: visible;
+    }
+
+    /* 기관 로고 자리 표시자 — 실제 배포 시 <img class="logo-org" src="..."> 로 교체 */
+    .logo-org-placeholder {
+      flex-shrink: 0;
+      height: calc(var(--logo-h) * 0.82);
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      border: 1.5px dashed var(--border);
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .logo-org {
+      flex-shrink: 0;
+      height: calc(var(--logo-h) * 0.82);
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+
+    .site-header .logo-provider {
+      flex-shrink: 0;
+      height: calc(var(--logo-h) * 0.75);
+      width: auto;
+      max-width: min(150px, 42vw);
+      object-fit: contain;
+      object-position: right center;
+      display: block;
+    }
+
+    /* Page wrapper */
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* Page visibility */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .card-body {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Intro page */
+    .intro-hero {
+      background: var(--gray-600);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .intro-hero h1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .intro-hero p {
+      color: var(--teal-100);
+      font-size: 0.875rem;
+    }
+
+    .intro-section {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-section:last-child {
+      border-bottom: none;
+    }
+
+    .intro-section h2 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    /* 심리검사 / 심리상담 그룹: 개요·본문·유의사항 3단 구성 */
+    .topic-group + .topic-group {
+      margin-top: 0.5rem;
+      border-top: 8px solid var(--bg);
+    }
+
+    .topic-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      padding: 1.5rem 2rem 0;
+    }
+
+    .intro-section p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .scale-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .scale-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .scale-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+
+    /* Section title */
+    .section-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.375rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Instruction box */
+    .instruction-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: var(--teal-800);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* Scale headers */
+    .scale-header-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(4, 68px);
+      gap: 4px;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scale-header-row span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .scale-header-row span:first-child {
+      text-align: left;
+      font-size: 0.75rem;
+    }
+
+    /* Question row */
+    .question-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(4, 68px);
+      gap: 4px;
+      align-items: center;
+      min-height: 3.4rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #F0F4F1;
+      transition: background 0.15s;
+    }
+
+    .question-row:hover {
+      background: #F9FCF9;
+      border-radius: 8px;
+    }
+
+    .question-row.unanswered {
+      background: #FFF6F6;
+      border-radius: 8px;
+      border-bottom: 1px solid #FFCDD2;
+      outline: 1px solid #FFCDD2;
+      outline-offset: -1px;
+    }
+
+    .question-row:last-child {
+      border-bottom: none;
+    }
+
+    .question-text {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      padding-right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .q-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 18px;
+    }
+
+    .radio-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      background: #fff;
+    }
+
+    input[type="radio"]:hover {
+      border-color: var(--accent);
+    }
+
+    input[type="radio"]:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #fff;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Form inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"] {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      color: var(--text-primary);
+      background: #fff;
+      transition: border-color 0.15s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group input.error {
+      border-color: var(--red-400);
+    }
+
+    .error-msg {
+      font-size: 0.75rem;
+      color: var(--red-400);
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    /* 성별 선택 버튼 (여성/남성 좌우) */
+    .gender-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .job-option {
+      position: relative;
+    }
+
+    .job-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .job-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.6rem 0.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      line-height: 1.4;
+      min-height: 48px;
+    }
+
+    .job-option input[type="radio"]:checked+label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .job-option label:hover {
+      border-color: var(--accent);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      width: 100%;
+      padding: 0.875rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-800);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary:disabled {
+      background: var(--gray-400);
+      cursor: not-allowed;
+    }
+
+    /* Alert banner */
+    .alert-banner {
+      background: #FEF4DA;
+      border: 1px solid #F5C13B;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #8A6410;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .alert-banner.show {
+      display: block;
+    }
+
+    /* Result page */
+    .result-header {
+      background: var(--gray-600);
+      padding: 2rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .result-header h1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-name {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .result-cards {
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .result-cards {
+        padding: 1.25rem;
+      }
+    }
+
+    .result-card {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .result-card-header {
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .result-card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .result-card-body {
+      padding: 1rem 1.25rem 1.25rem;
+      background: #fff;
+    }
+
+    .score-display {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .score-max {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .score-label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-bar-wrap {
+      background: var(--gray-100);
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+
+    /* Level colors */
+    .level-normal .result-card-header {
+      background: var(--green-50);
+    }
+
+    .level-normal .result-card-title {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-num {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-label {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-bar-fill {
+      background: var(--green-400);
+    }
+
+    .level-mild .result-card-header {
+      background: #FFFBEA;
+    }
+
+    .level-mild .result-card-title {
+      color: #7A5A00;
+    }
+
+    .level-mild .score-num {
+      color: var(--amber-400);
+    }
+
+    .level-mild .score-label {
+      color: var(--amber-400);
+    }
+
+    .level-mild .score-bar-fill {
+      background: var(--amber-400);
+    }
+
+    .level-moderate .result-card-header {
+      background: #FFF0E8;
+    }
+
+    .level-moderate .result-card-title {
+      color: #7A3A00;
+    }
+
+    .level-moderate .score-num {
+      color: #D85A30;
+    }
+
+    .level-moderate .score-label {
+      color: #D85A30;
+    }
+
+    .level-moderate .score-bar-fill {
+      background: #D85A30;
+    }
+
+    .level-severe .result-card-header {
+      background: #FFF0F0;
+    }
+
+    .level-severe .result-card-title {
+      color: var(--red-600);
+    }
+
+    .level-severe .score-num {
+      color: var(--red-400);
+    }
+
+    .level-severe .score-label {
+      color: var(--red-400);
+    }
+
+    .level-severe .score-bar-fill {
+      background: var(--red-400);
+    }
+
+    .interp-current {
+      margin-top: 0.875rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .interp-heading {
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin: 0 0 0.3rem;
+      opacity: 0.85;
+    }
+
+    .score-interpretation {
+      margin-top: 0.6rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .level-normal .score-interpretation {
+      background: var(--green-50);
+      color: var(--green-600);
+    }
+
+    .level-mild .score-interpretation {
+      background: #FFFBEA;
+      color: #6A4A00;
+    }
+
+    .level-moderate .score-interpretation {
+      background: #FFF0E8;
+      color: #5A2A10;
+    }
+
+    .level-severe .score-interpretation {
+      background: #FFF0F0;
+      color: var(--red-600);
+    }
+
+    .level-normal .interp-current {
+      background: #E5F3D8;
+    }
+    .level-normal .interp-current .interp-heading {
+      color: var(--green-600);
+    }
+
+    .level-mild .interp-current {
+      background: #FFF3CC;
+    }
+    .level-mild .interp-current .interp-heading {
+      color: #7A5A00;
+    }
+
+    .level-moderate .interp-current {
+      background: #FFE0D0;
+    }
+    .level-moderate .interp-current .interp-heading {
+      color: #7A3A00;
+    }
+
+    .level-severe .interp-current {
+      background: #FFDCDC;
+    }
+    .level-severe .interp-current .interp-heading {
+      color: var(--red-600);
+    }
+
+    .thankyou-body {
+      padding: 1.5rem 2rem 0.5rem;
+      text-align: center;
+    }
+
+    .result-notice {
+      padding: 0 2rem;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .thankyou-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .result-footer {
+      padding: 1.25rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .result-footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+    }
+
+    /* Sending overlay */
+    .sending-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sending-overlay.show {
+      display: flex;
+    }
+
+    .sending-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .sending-box p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .pc-br {
+        display: none;
+      }
+
+      .scale-header-row {
+        grid-template-columns: 1fr repeat(4, 40px);
+      }
+
+      .question-row {
+        grid-template-columns: 1fr repeat(4, 40px);
+      }
+
+      .scale-header-row span {
+        font-size: 0.62rem;
+      }
+
+      input[type="radio"] {
+        width: 20px;
+        height: 20px;
+      }
+
+      .intro-hero h1 {
+        font-size: 1.2rem;
+      }
+
+      .result-header h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .scale-header-row {
+        grid-template-columns: 1fr repeat(4, 36px);
+      }
+
+      .question-row {
+        grid-template-columns: 1fr repeat(4, 36px);
+      }
+
+      input[type="radio"] {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    /* Step nav */
+    .step-nav {
+      background: #fff;
+      border-bottom: 1px solid #C2C8CB;
+      box-shadow: 0 3px 8px rgba(60, 68, 74, 0.08);
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .step-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .step-nav-inner {
+      display: flex;
+      gap: 0;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .step-btn {
+      flex: 1;
+      min-width: 56px;
+      padding: 0.6rem 0.25rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #96A0A6;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .step-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: transparent;
+      border-radius: 2px 2px 0 0;
+      transition: background 0.15s;
+    }
+
+    .step-btn:hover {
+      color: var(--gray-600);
+    }
+
+    .step-btn.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .step-btn.active::after {
+      background: var(--accent);
+    }
+
+    .step-btn.locked {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .step-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #C2C8CB;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #96A0A6;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .step-btn.active .step-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .step-btn:hover .step-dot {
+      border-color: var(--gray-600);
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 0.5rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .feature-list-numbered {
+      counter-reset: feature-num;
+    }
+
+    .feature-list-numbered li {
+      counter-increment: feature-num;
+    }
+
+    .feature-list-numbered li::before {
+      content: counter(feature-num) '.';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Procedure steps */
+    .procedure-steps {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.75rem;
+    }
+
+    .procedure-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 0.6rem 0;
+      position: relative;
+    }
+
+    .procedure-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 46px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      padding-top: 5px;
+    }
+
+    .step-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .step-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <!-- TODO: 기관 로고 교체 — 아래 placeholder div를
+         <a href="..." target="_blank" rel="noopener noreferrer" class="logo-org-host">
+           <img class="logo-org" src="기관로고파일" alt="기관명">
+         </a>
+         형태로 교체하세요 -->
+    <div class="logo-org-host">
+      <img class="logo-org" src="../jdc.png" alt="제주국제자유도시개발센터">
+    </div>
+    <a href="http://eap.mycoun21.com" target="_blank" rel="noopener noreferrer">
+      <img class="logo-provider" src="../mycoun logo.png" alt="마이카운슬러">
+    </a>
+  </header>
+
+  <nav class="step-nav">
+    <div class="step-nav-inner">
+      <button class="step-btn active" onclick="tryGoPage(0)">
+        <div class="step-dot">1</div>안내
+      </button>
+      <button class="step-btn" onclick="tryGoPage(1)">
+        <div class="step-dot">2</div>기본정보
+      </button>
+      <button class="step-btn" onclick="tryGoPage(2)">
+        <div class="step-dot">3</div>우울
+      </button>
+      <button class="step-btn" onclick="tryGoPage(3)">
+        <div class="step-dot">4</div>불안
+      </button>
+      <button class="step-btn" onclick="tryGoPage(4)">
+        <div class="step-dot">5</div>스트레스
+      </button>
+      <button class="step-btn" onclick="tryGoPage(5)">
+        <div class="step-dot">6</div>결과
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- PAGE 0: 안내 -->
+    <div class="page active" id="page-0">
+      <div class="card">
+        <div class="intro-hero">
+          <!-- TODO: 기관명/사업명 교체 -->
+          <h1>제주국제자유도시개발센터<br>사전 심리검사</h1>
+          <p
+            style="margin-top:0.75rem; font-size:0.82rem; color:rgba(255,255,255,0.85); line-height:1.8; word-break:keep-all;">
+            안녕하세요. 심리상담을 신청해 주셔서 진심으로 감사드립니다.<br>본 사전 심리검사는 임직원의 심리적 상태를 파악하고, 심리상담의 효과성 분석을 위해서 실시합니다.</p>
+        </div>
+
+        <div class="topic-group">
+          <div class="intro-section">
+            <h2>안내</h2>
+            <ul class="feature-list feature-list-numbered">
+              <li><strong>대상</strong> 제주국제자유도시개발센터 심리상담 이용자</li>
+              <li><strong>검사도구</strong> 우울·불안·스트레스 척도(NDS, NAS, NSS)</li>
+              <li><strong>활용 목적</strong> 본 사전 심리검사는 상담 효과성 확인을 위해서만 진행됩니다</li>
+            </ul>
+          </div>
+
+          <div class="intro-section">
+            <h2>검사 안내</h2>
+            <p>본 검사는 국립정신건강센터와 대한신경정신의학회 기반의 한국형 정신건강 척도를 활용하여 진행됩니다.</p>
+            <ul class="scale-list" style="margin-top:0.75rem;">
+              <li><span class="scale-badge">NDS</span>표준형 한국인 우울 척도 (National Depression Scale)</li>
+              <li><span class="scale-badge">NAS</span>표준형 한국인 불안 척도 (National Anxiety Scale)</li>
+              <li><span class="scale-badge">NSS</span>표준형 한국인 스트레스 척도 (National Stress Scale)</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.78rem; color:var(--text-muted);">출처: 보건복지부 국립정신건강센터</p>
+          </div>
+
+          <div class="intro-section">
+            <h2>비밀보장 안내</h2>
+            <ul class="feature-list">
+              <li>본 사전 심리검사 과정에서 수집된 모든 정보는 엄격한 비밀보장 원칙에 따라 관리됩니다.</li>
+              <li>해당 정보는 상담 효과성 분석에 한하여 사용되며, 개인을 식별할 수 없는 형태로 통계 처리됩니다.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="intro-section">
+          <button class="btn-primary" style="margin-top:0;" onclick="goPage(1)">검사 시작하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 1: 기본정보 -->
+    <div class="page" id="page-1">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">기본 정보 입력</p>
+          <p class="section-subtitle">수집된 정보는 고위험군 관리 및 상담 연계 목적 외에는 사용되지 않습니다</p>
+
+          <div class="form-group">
+            <label for="inp-name">이름 <span style="color:var(--red-400)">*</span></label>
+            <input type="text" id="inp-name" placeholder="이름을 입력해 주세요">
+            <p class="error-msg" id="err-name">이름을 입력해 주세요.</p>
+          </div>
+          <div class="form-group">
+            <label for="inp-phone">휴대폰 번호 <span style="color:var(--red-400)">*</span></label>
+            <p class="hint">숫자만 입력해 주세요 (- 없이 입력)</p>
+            <input type="tel" id="inp-phone" placeholder="01012345678" maxlength="11" inputmode="numeric">
+            <p class="error-msg" id="err-phone">올바른 휴대폰 번호를 입력해 주세요.</p>
+          </div>
+          <div class="form-group">
+            <label>성별 <span style="color:var(--red-400)">*</span></label>
+            <div class="gender-options">
+              <div class="job-option">
+                <input type="radio" name="gender" id="gender-f" value="여"
+                  onchange="document.getElementById('err-gender').classList.remove('show')">
+                <label for="gender-f">여성</label>
+              </div>
+              <div class="job-option">
+                <input type="radio" name="gender" id="gender-m" value="남"
+                  onchange="document.getElementById('err-gender').classList.remove('show')">
+                <label for="gender-m">남성</label>
+              </div>
+            </div>
+            <p class="error-msg" id="err-gender">성별을 선택해 주세요.</p>
+          </div>
+          <button class="btn-primary" onclick="validatePersonal()">다음 단계 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: 우울 척도 -->
+    <div class="page" id="page-2">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">한국인 우울 척도 (NDS)</p>
+          <p class="section-subtitle">총 12문항</p>
+          <div class="instruction-box">
+            이 검사는 우울 정도를 알아보기 위한 것입니다.<br>
+            최근 2주간 각 문항에 해당하는 증상을 얼마나 자주 경험하였는지 확인하고 해당하는 번호에 체크를 하기 바랍니다.
+          </div>
+          <div class="alert-banner" id="alert-depression">모든 문항에 응답해 주세요.</div>
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지<br>않다<br><em>(없음)</em></span>
+            <span>가끔<br>그렇다<br><em>(2일 이상)</em></span>
+            <span>자주<br>그렇다<br><em>(1주 이상)</em></span>
+            <span>거의<br>매일<br>그렇다<br><em>(거의 2주)</em></span>
+          </div>
+          <div id="depression-questions"></div>
+          <button class="btn-primary" onclick="validateScale('depression', 12, 3)">다음 단계 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: 불안 척도 -->
+    <div class="page" id="page-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">한국인 불안 척도 (NAS)</p>
+          <p class="section-subtitle">총 11문항</p>
+          <div class="instruction-box">
+            이 검사는 불안 정도를 알아보기 위한 것입니다.<br>
+            최근 2주간 각 문항에 해당하는 증상을 얼마나 자주 경험하였는지 확인하고 해당하는 번호에 체크를 하기 바랍니다.
+          </div>
+          <div class="alert-banner" id="alert-anxiety">모든 문항에 응답해 주세요.</div>
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지<br>않다<br><em>(없음)</em></span>
+            <span>가끔<br>그렇다<br><em>(2일 이상)</em></span>
+            <span>자주<br>그렇다<br><em>(1주 이상)</em></span>
+            <span>거의<br>매일<br>그렇다<br><em>(거의 2주)</em></span>
+          </div>
+          <div id="anxiety-questions"></div>
+          <button class="btn-primary" onclick="validateScale('anxiety', 11, 4)">다음 단계 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: 스트레스 척도 -->
+    <div class="page" id="page-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">한국인 스트레스 척도 (NSS)</p>
+          <p class="section-subtitle">총 11문항</p>
+          <div class="instruction-box">
+            이 검사는 스트레스 정도를 알아보기 위한 것입니다.<br>
+            최근 2주간 각 문항에 해당하는 증상을 얼마나 자주 경험하였는지 확인하고 해당하는 번호에 체크를 하기 바랍니다.
+          </div>
+          <div class="alert-banner" id="alert-stress">모든 문항에 응답해 주세요.</div>
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지<br>않다<br><em>(없음)</em></span>
+            <span>가끔<br>그렇다<br><em>(2일 이상)</em></span>
+            <span>자주<br>그렇다<br><em>(1주 이상)</em></span>
+            <span>거의<br>매일<br>그렇다<br><em>(거의 2주)</em></span>
+          </div>
+          <div id="stress-questions"></div>
+          <button class="btn-primary" onclick="validateScale('stress', 11, submitSurvey)">결과 확인하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 5: 결과 -->
+    <div class="page" id="page-5">
+      <div class="card">
+        <div class="result-header">
+          <p class="result-name" id="result-name-display"></p>
+          <h1>검사 결과</h1>
+        </div>
+
+        <div class="result-cards" id="result-cards-wrap"></div>
+
+        <p class="result-notice">※ 검사 결과는 별도로 개별 발송되지 않습니다. 현재 화면에 표시된 결과를 확인해 주세요.</p>
+
+        <div class="thankyou-body">
+          <p>소중한 응답 감사합니다.<br>사전 심리검사에 참여해 주셔서 감사드립니다.</p>
+        </div>
+
+        <div class="result-footer">
+          <div class="contact-chip">
+            📞 마이카운슬러 1877-0410
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <!-- Sending overlay -->
+  <div class="sending-overlay" id="sending-overlay">
+    <div class="sending-box">
+      <div class="spinner"></div>
+      <p id="sending-text">결과를 분석중입니다</p>
+    </div>
+  </div>
+
+  <script>
+    // ===== DATA =====
+    const depressionItems = [
+      '하루 종일 우울하다', '평소에는 즐겁던 일이 재미없어졌다', '죽고 싶다',
+      '마음속에서 뭔가 치밀어 오르는 것 같다', '사소한 일도 결정하기가 어렵다', '자신감을 잃었다',
+      '앞으로도 좋은 일이 생길 것 같지 않다', '안절부절못하거나 느려졌다는 말을 듣는다',
+      '잠을 지나치게 많이 자거나 적게 잔다', '식욕이 지나치게 늘거나 줄었다',
+      '피곤하고 기진맥진한 상태이다', '하루를 생활하기가 버겁다'
+    ];
+
+    const anxietyItems = [
+      '이유 없이 불안하다', '안절부절못한다', '불안이나 걱정으로 일상생활이 안 된다',
+      '나쁜 일이 일어날까 두렵다', '걱정이 많다는 것을 알면서도 걱정을 멈출 수 없다',
+      '집중하는 것이 힘들다', '금방 피로해진다', '신경이 날카롭다', '근육이 긴장된다',
+      '잠들기 어렵거나 자는 도중 자꾸 깬다', '두근거림, 떨림, 입마름 등의 증상이 있다'
+    ];
+
+    const stressItems = [
+      '스트레스를 많이 받는다', '변화에 적응하기 어렵다', '문제가 생기면 직접 처리할 자신이 없다',
+      '머리가 아프다', '어지럽다', '소화가 안 된다', '가슴이 답답하다', '불안하고 초조하다',
+      '쉽게 화가 난다', '쉽게 짜증이 난다', '뭘 자꾸 먹게 된다'
+    ];
+
+    // ===== STATE =====
+    let answers = { depression: {}, anxiety: {}, stress: {} };
+    let userData = {};
+
+    // ===== RENDER QUESTIONS =====
+    function renderQuestions(containerId, items, scaleName) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      items.forEach((text, i) => {
+        const row = document.createElement('div');
+        row.className = 'question-row';
+        let radios = '';
+        for (let v = 0; v <= 3; v++) {
+          const checked = answers[scaleName][i] === v ? 'checked' : '';
+          radios += `<div class="radio-cell"><input type="radio" name="${scaleName}_${i}" value="${v}" ${checked} onchange="setAnswer('${scaleName}', ${i}, ${v})"></div>`;
+        }
+        row.innerHTML = `<div class="question-text"><span class="q-num">${i + 1}</span>${text}</div>${radios}`;
+        container.appendChild(row);
+      });
+      equalizeRowHeights(container);
+    }
+
+    // 문항 길이가 제각각이라 줄바꿈된 행만 커지는 것을 막기 위해, 가장 높은 행 기준으로 전체 행 높이를 맞춘다
+    function equalizeRowHeights(container) {
+      const rows = container.querySelectorAll('.question-row');
+      if (!rows.length) return;
+      rows.forEach(r => { r.style.minHeight = ''; });
+      const max = Math.max(...Array.from(rows).map(r => r.getBoundingClientRect().height));
+      rows.forEach(r => { r.style.minHeight = max + 'px'; });
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        ['depression-questions', 'anxiety-questions', 'stress-questions'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el && el.children.length) equalizeRowHeights(el);
+        });
+      }, 150);
+    });
+
+    function setAnswer(scale, qIdx, val) {
+      answers[scale][qIdx] = val;
+      const first = document.querySelector(`[name="${scale}_${qIdx}"]`);
+      if (first) {
+        const row = first.closest('.question-row');
+        if (row) row.classList.remove('unanswered');
+      }
+    }
+
+    // ===== NAVIGATION =====
+    let maxReached = 0;
+
+    function tryGoPage(n) {
+      if (n <= maxReached) goPage(n);
+    }
+
+    function goPage(n) {
+      maxReached = Math.max(maxReached, n);
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + n).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll('.step-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === n);
+        btn.classList.toggle('locked', i > maxReached);
+        if (i === n) btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      });
+      if (n === 2) renderQuestions('depression-questions', depressionItems, 'depression');
+      if (n === 3) renderQuestions('anxiety-questions', anxietyItems, 'anxiety');
+      if (n === 4) renderQuestions('stress-questions', stressItems, 'stress');
+    }
+
+    // ===== VALIDATION =====
+    function validatePersonal() {
+      let valid = true;
+      const name = document.getElementById('inp-name').value.trim();
+      const phone = document.getElementById('inp-phone').value.trim();
+
+      const showErr = (id, show) => {
+        document.getElementById(id).classList.toggle('show', show);
+        const inputEl = document.getElementById(id.replace('err-', 'inp-'));
+        if (inputEl) inputEl.classList.toggle('error', show);
+      };
+      const showGroupErr = (id, ok) => document.getElementById(id).classList.toggle('show', !ok);
+
+      const genderEl = document.querySelector('input[name="gender"]:checked');
+      const gender = genderEl ? genderEl.value : '';
+
+      if (!name) { showErr('err-name', true); valid = false; } else showErr('err-name', false);
+      if (!phone || !/^01[0-9]{8,9}$/.test(phone)) { showErr('err-phone', true); valid = false; } else showErr('err-phone', false);
+      if (!gender) { showGroupErr('err-gender', false); valid = false; } else showGroupErr('err-gender', true);
+
+      if (valid) {
+        userData = { name, phone, gender };
+        goPage(2);
+      }
+    }
+
+    function validateScale(scaleName, count, next) {
+      const alertId = 'alert-' + scaleName;
+      let firstMissing = null;
+      for (let i = 0; i < count; i++) {
+        const row = document.querySelector(`[name="${scaleName}_${i}"]`)?.closest('.question-row');
+        if (answers[scaleName][i] === undefined) {
+          if (row) row.classList.add('unanswered');
+          if (!firstMissing && row) firstMissing = row;
+        } else {
+          if (row) row.classList.remove('unanswered');
+        }
+      }
+      if (firstMissing) {
+        document.getElementById(alertId).classList.add('show');
+        firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      document.getElementById(alertId).classList.remove('show');
+      if (typeof next === 'function') next(); else goPage(next);
+    }
+
+    // ===== SCORING =====
+    function calcScore(scaleName) {
+      return Object.values(answers[scaleName]).reduce((sum, v) => sum + v, 0);
+    }
+
+    function getDepLevel(score) {
+      if (score <= 8) return { label: '정상', level: 'normal', max: 36, currentState: '우울 증상이 거의 관찰되지 않는 매우 안정적인 상태입니다. 일상생활의 흥미와 에너지를 건강하게 잘 유지하고 있습니다.', tip: '마음의 근력을 튼튼하게 지켜가기 위해, 오늘 하루 중 편안했던 순간이나 감사한 일을 짧게 기록하며 긍정적인 감각을 저축해 보세요.' };
+      if (score <= 18) return { label: '경증 수준의 우울장애', level: 'mild', max: 36, currentState: '에너지가 서서히 줄어들고 일상의 흥미가 옅어지는 시기입니다.', tip: '무기력을 \'게으름\'으로 탓하지 마세요. 감기 기운이 있을 때 쉬어야 하듯, 마음의 배터리가 방전되고 있다는 자연스러운 신호입니다. 물 한 잔 마시기, 창문 열기처럼 아주 사소한 일부터 나의 속도에 맞춰 작은 성취를 쌓아보세요.' };
+      if (score <= 28) return { label: '중등도 수준의 우울장애', level: 'moderate', max: 36, currentState: '혼자서 감정을 조절하고 일상을 유지하는 데 벅참을 느끼는 상태입니다.', tip: '우울감은 종종 과거에 대한 후회나 자책으로 우리를 끌고 갑니다. 복잡한 결정이나 책임은 잠시 미뤄두고, 오직 \'오늘 하루의 기본적인 식사와 수면\'을 지켜내는 데만 에너지를 집중해 주세요. 전문가와의 안전한 대화가 필요한 시점입니다.' };
+      return { label: '중증 수준의 우울장애', level: 'severe', max: 36, currentState: '깊은 우울감이 삶을 압도하여 즉각적인 보호와 돌봄이 필요한 상태입니다.', tip: '지금의 고통은 결코 의지가 약해서가 아닙니다. 혼자서 견뎌내려 하지 마시고, 반드시 전문의 진료나 심리상담을 통해 안전하게 마음의 무게를 나누어 주시길 권해드립니다.' };
+    }
+    function getAnxLevel(score) {
+      if (score <= 9) return { label: '정상', level: 'normal', max: 33, currentState: '과도한 불안이나 신체적 긴장감이 거의 없는 편안한 상태입니다. 다가올 미래보다 \'현재\'에 온전히 머무를 수 있는 내면의 힘을 갖추고 있습니다.', tip: '따뜻한 차를 마시며 온기를 느끼거나, 좋아하는 향기를 맡는 등 일상에서 오감을 깨우는 습관은 내면의 평온함을 더욱 깊고 단단하게 만들어줍니다.' };
+      if (score <= 16) return { label: '경증 수준의 불안장애', level: 'mild', max: 33, currentState: '아직 일어나지 않은 일에 대한 걱정이 늘어나고, 몸의 긴장도가 높아진 상태입니다.', tip: '턱이나 어깨에 나도 모르게 꽉 힘이 들어가 있지 않은지 가만히 점검해 보세요. 불안은 생각으로 통제하기보다, 호흡을 길게 내쉬며 몸의 힘을 툭 풀어낼 때 오히려 쉽게 가라앉습니다.' };
+      if (score <= 24) return { label: '중등도 수준의 불안장애', level: 'moderate', max: 33, currentState: '꼬리를 무는 걱정과 신체적 불편함(두근거림, 수면 장애 등)이 일상의 질을 떨어뜨리는 상태입니다.', tip: '불안이라는 감정을 억지로 몰아내려 애쓰지 마세요. \'아, 내 마음이 나를 보호하려고 지금 비상벨을 세게 울리고 있구나\'라고 한 걸음 떨어져서 바라보는 연습이 필요합니다.' };
+      return { label: '중증 수준의 불안장애', level: 'severe', max: 33, currentState: '통제하기 힘든 극심한 두려움과 공포감으로 에너지가 심하게 고갈된 상태입니다.', tip: '불안의 파도 속에서 무방비로 휩쓸리지 않도록, 나침반이 되어줄 전문가의 도움이 절실히 필요합니다. 주저하지 마시고 안전한 치료와 상담을 시작해 보세요.' };
+    }
+    function getStressLevel(score) {
+      if (score <= 10) return { label: '낮은 수준의 스트레스', level: 'normal', max: 33, currentState: '일상적인 스트레스나 자극을 유연하게 소화할 수 있는 대처 자원이 충분한 상태입니다. 약간의 긴장감을 성장의 동력으로 잘 활용하고 있습니다.', tip: '스트레스는 삶의 자연스러운 일부입니다. 지금처럼 꾸준한 취미나 가벼운 신체 활동을 통해 에너지를 순환시키는 나만의 회복 루틴을 계속 지켜나가 주세요.' };
+      if (score <= 20) return { label: '중등도 이상의 스트레스', level: 'mild', max: 33, currentState: '현재 마주한 상황들이 내가 감당할 수 있는 한계치를 서서히 넘어서고 있는 상태입니다.', tip: '외부의 기대나 타인의 감정을 내 것처럼 떠안고 있지 않은지 돌아볼 때입니다. 내가 통제할 수 없는 몫은 과감히 내려놓고, 나와 타인 사이에 건강한 마음의 경계선을 세우는 연습을 해보세요.' };
+      return { label: '매우 높은 중증 수준의 스트레스', level: 'severe', max: 33, currentState: '만성적이고 극심한 스트레스로 인해 감정 조절 능력을 잃기 쉬운 상태입니다.', tip: '엔진이 과열되었을 때는 멈추는 것이 유일한 해결책입니다. 주변의 자극으로부터 잠시 차단된, 오직 나 자신만을 위한 온전한 휴식과 전문적인 개입이 필요한 시점입니다.' };
+    }
+
+    // ===== RESULT CARD HTML =====
+    function buildResultCard(title, badge, score, scoreInfo) {
+      const pct = Math.round((score / scoreInfo.max) * 100);
+      return `
+    <div class="result-card level-${scoreInfo.level}">
+      <div class="result-card-header">
+        <span class="result-card-title">${badge} · ${title}</span>
+      </div>
+      <div class="result-card-body">
+        <div class="score-display">
+          <span class="score-num">${score}</span>
+          <span class="score-max">/ ${scoreInfo.max}점</span>
+        </div>
+        <div class="score-label">${scoreInfo.label}</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill" style="width: ${pct}%"></div>
+        </div>
+        <div class="interp-current">
+          <p class="interp-heading">현재 상태</p>
+          <p>${scoreInfo.currentState}</p>
+        </div>
+        <div class="score-interpretation">
+          <p class="interp-heading">마음 관리 팁</p>
+          <p>${scoreInfo.tip}</p>
+        </div>
+      </div>
+    </div>`;
+    }
+
+    // ===== DB 전송 =====
+    // 같은 폴더에 배포된 submit.php 로 전송 (기관별 MariaDB 테이블에 저장)
+    const SUBMIT_URL = 'submit.php';
+
+    async function sendToServer(payload) {
+      try {
+        const res = await fetch(SUBMIT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return true;
+      } catch (e) {
+        console.warn('DB 전송 실패:', e);
+        return false;
+      }
+    }
+
+    // ===== SUBMIT =====
+    function showOverlay(text) {
+      document.getElementById('sending-text').textContent = text;
+      document.getElementById('sending-overlay').classList.add('show');
+    }
+    function hideOverlay() {
+      document.getElementById('sending-overlay').classList.remove('show');
+    }
+
+    async function submitSurvey() {
+      showOverlay('결과를 분석중입니다');
+      await new Promise(resolve => setTimeout(resolve, 700));
+
+      const dScore = calcScore('depression');
+      const aScore = calcScore('anxiety');
+      const sScore = calcScore('stress');
+      const dInfo = getDepLevel(dScore);
+      const aInfo = getAnxLevel(aScore);
+      const sInfo = getStressLevel(sScore);
+
+      const now = new Date();
+      const dateStr = `${now.getFullYear()}. ${now.getMonth() + 1}. ${now.getDate()}. ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+      const rowId = `${Date.now()}_${userData.name}`;
+
+      document.getElementById('result-name-display').textContent = userData.name + ' 님';
+
+      const wrap = document.getElementById('result-cards-wrap');
+      wrap.innerHTML =
+        buildResultCard('우울 척도', 'NDS', dScore, dInfo) +
+        buildResultCard('불안 척도', 'NAS', aScore, aInfo) +
+        buildResultCard('스트레스 척도', 'NSS', sScore, sInfo);
+
+      const surveyPayload = {
+        rowId,
+        timestamp: dateStr,
+        name: userData.name,
+        phone: userData.phone,
+        gender: userData.gender,
+        depressionScore: dScore,
+        anxietyScore: aScore,
+        stressScore: sScore
+      };
+      await sendToServer(surveyPayload);
+
+      goPage(5);
+      hideOverlay();
+    }
+
+    // ===== INIT =====
+    renderQuestions('depression-questions', depressionItems, 'depression');
+    document.querySelectorAll('.step-btn').forEach((btn, i) => {
+      btn.classList.toggle('locked', i > maxReached);
+    });
+  </script>
+</body>
+
+</html>

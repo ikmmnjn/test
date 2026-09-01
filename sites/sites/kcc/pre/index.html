@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한국저작권위원회 사전 심리검사 안내 | 마이카운슬러</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #EA5A1E;
+      --accent-light: #FCEBE1;
+      --bg: #F4F5F6;
+      --card: #FFFFFF;
+      --text-primary: #2E2F31;
+      --text-secondary: #58595B;
+      --text-muted: #8A8C8E;
+      --border: #DEDFE1;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.7;
+      word-break: keep-all;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-header {
+      --logo-h: 40px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.15rem 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-org-host {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      height: var(--logo-h);
+      overflow: visible;
+    }
+
+    .logo-org {
+      height: calc(var(--logo-h) * 0.82);
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-provider {
+      height: calc(var(--logo-h) * 0.75);
+      width: auto;
+      max-width: min(150px, 42vw);
+      object-fit: contain;
+      display: block;
+    }
+
+    .page-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      margin: 2.5rem auto 1rem;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .card h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 1.5rem 0.75rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin: 0 1.75rem;
+    }
+
+    .card .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      margin: 1.75rem 0 2.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="logo-org-host">
+      <img class="logo-org" src="../kcc.png" alt="한국저작권위원회">
+    </div>
+    <a href="http://eap.mycoun21.com" target="_blank" rel="noopener noreferrer">
+      <img class="logo-provider" src="../mycoun logo.png" alt="마이카운슬러">
+    </a>
+  </header>
+
+  <div class="page-wrap">
+    <div class="card">
+      <div class="card-icon">✓</div>
+      <h1>사전 심리검사가 이미 완료되었습니다</h1>
+      <p>한국저작권위원회 고객응대 근로자 건강보호 프로그램의 사전 심리검사는 이미 시행이 완료되어, 별도로 다시 참여하지 않으셔도 됩니다.</p>
+      <p class="sub">상담 종료 후에는 사후 심리검사 및 상담만족도 조사 안내를 별도로 드릴 예정입니다.</p>
+      <div class="contact-chip">📞 문의: 마이카운슬러 1877-0410</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

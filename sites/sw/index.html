@@ -1,0 +1,4139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서울시민 마음잡고 프로젝트 참여 신청 | 서울시여성가족재단</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* 브랜드 색상 — 기관별 배포 시 아래 값만 교체하면 전체 테마가 바뀝니다 */
+      --teal-50: #F1EDFF;
+      --teal-100: #D9D0FF;
+      --teal-400: #5B3DF6;
+      --teal-600: #4526D9;
+      --teal-800: #3A1FB8;
+      --gray-50: #F5F6F7;
+      --gray-100: #E9EAEB;
+      --gray-400: #9A9C9E;
+      --gray-600: #4B4D4F;
+      --gray-800: #2E2F31;
+      --green-400: #6EB92C;
+      --green-600: #52891F;
+      --green-50: #EDF7E0;
+      --amber-400: #BA7517;
+      --red-400: #E24B4A;
+      --red-600: #A32D2D;
+      --bg: #F4F5F6;
+      --card: #FFFFFF;
+      --text-primary: #2E2F31;
+      --text-secondary: #58595B;
+      --text-muted: #8A8C8E;
+      --border: #DEDFE1;
+      --accent: #5B3DF6;
+      --accent-light: #EFEBFF;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    /* Header */
+    .site-header {
+      --logo-h: 40px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.15rem 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .logo-org-host {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      height: var(--logo-h);
+      overflow: visible;
+    }
+
+    .logo-org {
+      flex-shrink: 0;
+      height: calc(var(--logo-h) * 0.82);
+      width: auto;
+      max-width: min(190px, 42vw);
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+
+    .site-header .logo-provider {
+      flex-shrink: 0;
+      height: calc(var(--logo-h) * 0.75);
+      width: auto;
+      max-width: min(150px, 42vw);
+      object-fit: contain;
+      object-position: right center;
+      display: block;
+    }
+
+    /* Page wrapper */
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* Page visibility */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .card-body {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Intro page */
+    .intro-hero {
+      background: linear-gradient(135deg, var(--teal-600) 0%, var(--accent) 55%, #7C63F8 100%);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .intro-hero h1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .intro-hero p {
+      color: var(--teal-100);
+      font-size: 0.875rem;
+    }
+
+    .intro-section {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-section:last-child {
+      border-bottom: none;
+    }
+
+    .intro-section h2 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    /* 심리검사 / 심리상담 그룹: 개요·본문·유의사항 3단 구성 */
+    .topic-group + .topic-group {
+      margin-top: 0.5rem;
+      border-top: 8px solid var(--bg);
+    }
+
+    .topic-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      padding: 1.5rem 2rem 0;
+    }
+
+    .intro-section p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .scale-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .scale-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .scale-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+
+    /* Section title */
+    .section-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.375rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Instruction box */
+    .instruction-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: var(--teal-800);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* Scale headers */
+    .scale-header-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(4, 68px);
+      gap: 4px;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scale-header-row span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .scale-header-row span:first-child {
+      text-align: left;
+      font-size: 0.75rem;
+    }
+
+    /* Question row */
+    .question-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(4, 68px);
+      gap: 4px;
+      align-items: center;
+      min-height: 3.4rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #F0F4F1;
+      transition: background 0.15s;
+    }
+
+    .question-row:hover {
+      background: #F9FCF9;
+      border-radius: 8px;
+    }
+
+    .question-row.unanswered {
+      background: #FFF6F6;
+      border-radius: 8px;
+      border-bottom: 1px solid #FFCDD2;
+      outline: 1px solid #FFCDD2;
+      outline-offset: -1px;
+    }
+
+    .question-row:last-child {
+      border-bottom: none;
+    }
+
+    .question-text {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      padding-right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .q-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 18px;
+    }
+
+    .radio-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      background: #fff;
+    }
+
+    input[type="radio"]:hover {
+      border-color: var(--accent);
+    }
+
+    input[type="radio"]:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: #fff;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Form inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"] {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      color: var(--text-primary);
+      background: #fff;
+      transition: border-color 0.15s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group input.error {
+      border-color: var(--red-400);
+    }
+
+    .error-msg {
+      font-size: 0.75rem;
+      color: var(--red-400);
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    /* 성별 선택 버튼 (여성/남성 좌우) */
+    .gender-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .job-option {
+      position: relative;
+    }
+
+    .job-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .job-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.6rem 0.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      line-height: 1.4;
+      min-height: 48px;
+    }
+
+    .job-option input[type="radio"]:checked+label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .job-option label:hover {
+      border-color: var(--accent);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      width: 100%;
+      padding: 0.875rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-800);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary:disabled {
+      background: var(--gray-400);
+      cursor: not-allowed;
+    }
+
+    /* Alert banner */
+    .alert-banner {
+      background: #FEF4DA;
+      border: 1px solid #F5C13B;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #8A6410;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .alert-banner.show {
+      display: block;
+    }
+
+    /* Result page */
+    .result-header {
+      background: linear-gradient(135deg, var(--teal-600) 0%, var(--accent) 55%, #7C63F8 100%);
+      padding: 2rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .result-header h1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-name {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .result-cards {
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .result-cards {
+        padding: 1.25rem;
+      }
+    }
+
+    .result-card {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .result-card-header {
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .result-card-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .result-card-body {
+      padding: 1rem 1.25rem 1.25rem;
+      background: #fff;
+    }
+
+    .score-display {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .score-max {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .score-label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-bar-wrap {
+      background: var(--gray-100);
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+
+    /* Level colors */
+    .level-normal .result-card-header {
+      background: var(--green-50);
+    }
+
+    .level-normal .result-card-title {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-num {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-label {
+      color: var(--green-600);
+    }
+
+    .level-normal .score-bar-fill {
+      background: var(--green-400);
+    }
+
+    .level-mild .result-card-header {
+      background: #FFFBEA;
+    }
+
+    .level-mild .result-card-title {
+      color: #7A5A00;
+    }
+
+    .level-mild .score-num {
+      color: var(--amber-400);
+    }
+
+    .level-mild .score-label {
+      color: var(--amber-400);
+    }
+
+    .level-mild .score-bar-fill {
+      background: var(--amber-400);
+    }
+
+    .level-moderate .result-card-header {
+      background: #FFF0E8;
+    }
+
+    .level-moderate .result-card-title {
+      color: #7A3A00;
+    }
+
+    .level-moderate .score-num {
+      color: #D85A30;
+    }
+
+    .level-moderate .score-label {
+      color: #D85A30;
+    }
+
+    .level-moderate .score-bar-fill {
+      background: #D85A30;
+    }
+
+    .level-severe .result-card-header {
+      background: #FFF0F0;
+    }
+
+    .level-severe .result-card-title {
+      color: var(--red-600);
+    }
+
+    .level-severe .score-num {
+      color: var(--red-400);
+    }
+
+    .level-severe .score-label {
+      color: var(--red-400);
+    }
+
+    .level-severe .score-bar-fill {
+      background: var(--red-400);
+    }
+
+    .interp-current {
+      margin-top: 0.875rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .interp-heading {
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin: 0 0 0.3rem;
+      opacity: 0.85;
+    }
+
+    .score-interpretation {
+      margin-top: 0.6rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .level-normal .score-interpretation {
+      background: var(--green-50);
+      color: var(--green-600);
+    }
+
+    .level-mild .score-interpretation {
+      background: #FFFBEA;
+      color: #6A4A00;
+    }
+
+    .level-moderate .score-interpretation {
+      background: #FFF0E8;
+      color: #5A2A10;
+    }
+
+    .level-severe .score-interpretation {
+      background: #FFF0F0;
+      color: var(--red-600);
+    }
+
+    .level-normal .interp-current {
+      background: #E5F3D8;
+    }
+    .level-normal .interp-current .interp-heading {
+      color: var(--green-600);
+    }
+
+    .level-mild .interp-current {
+      background: #FFF3CC;
+    }
+    .level-mild .interp-current .interp-heading {
+      color: #7A5A00;
+    }
+
+    .level-moderate .interp-current {
+      background: #FFE0D0;
+    }
+    .level-moderate .interp-current .interp-heading {
+      color: #7A3A00;
+    }
+
+    .level-severe .interp-current {
+      background: #FFDCDC;
+    }
+    .level-severe .interp-current .interp-heading {
+      color: var(--red-600);
+    }
+
+    .thankyou-body {
+      padding: 1.5rem 2rem 0.5rem;
+      text-align: center;
+    }
+
+    .result-notice {
+      padding: 0 2rem;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .thankyou-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .result-footer {
+      padding: 1.25rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .result-footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+    }
+
+    /* Sending overlay */
+    .sending-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sending-overlay.show {
+      display: flex;
+    }
+
+    /* 녹음 미동의 안내 모달 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem 1.4rem;
+      max-width: 24rem;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    .modal-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      word-break: keep-all;
+    }
+
+    .modal-box p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 0.6rem;
+      word-break: keep-all;
+    }
+
+    .modal-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+
+    .modal-btns .btn-primary {
+      margin-top: 0;
+      font-size: 0.88rem;
+      padding: 0.75rem 0.5rem;
+    }
+
+    .modal-btns .btn-secondary {
+      font-size: 0.88rem;
+    }
+
+    .sending-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .sending-box p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .pc-br {
+        display: none;
+      }
+
+      .scale-header-row {
+        grid-template-columns: 1fr repeat(4, 40px);
+      }
+
+      .question-row {
+        grid-template-columns: 1fr repeat(4, 40px);
+      }
+
+      .scale-header-row span {
+        font-size: 0.62rem;
+      }
+
+      input[type="radio"] {
+        width: 20px;
+        height: 20px;
+      }
+
+      .intro-hero h1 {
+        font-size: 1.2rem;
+      }
+
+      .result-header h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .scale-header-row {
+        grid-template-columns: 1fr repeat(4, 36px);
+      }
+
+      .question-row {
+        grid-template-columns: 1fr repeat(4, 36px);
+      }
+
+      input[type="radio"] {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    /* Step nav */
+    .step-nav {
+      background: #fff;
+      border-bottom: 1px solid #C2C8CB;
+      box-shadow: 0 3px 8px rgba(60, 68, 74, 0.08);
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .step-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .step-nav-inner {
+      display: flex;
+      gap: 0;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .step-btn {
+      flex: 1;
+      min-width: 56px;
+      padding: 0.6rem 0.25rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #96A0A6;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .step-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: transparent;
+      border-radius: 2px 2px 0 0;
+      transition: background 0.15s;
+    }
+
+    .step-btn:hover {
+      color: var(--gray-600);
+    }
+
+    .step-btn.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .step-btn.active::after {
+      background: var(--accent);
+    }
+
+    .step-btn.locked {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .step-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #C2C8CB;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #96A0A6;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .step-btn.active .step-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .step-btn:hover .step-dot {
+      border-color: var(--gray-600);
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 0.5rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .feature-list-numbered {
+      counter-reset: feature-num;
+    }
+
+    .feature-list-numbered li {
+      counter-increment: feature-num;
+    }
+
+    .feature-list-numbered li::before {
+      content: counter(feature-num) '.';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Procedure steps */
+    .procedure-steps {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.75rem;
+    }
+
+    .procedure-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 0.6rem 0;
+      position: relative;
+    }
+
+    .procedure-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 46px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      padding-top: 5px;
+    }
+
+    .step-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .step-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════
+       신청서 확장 — 서울시민 마음잡고 프로젝트
+       ══════════════════════════════════════════════ */
+
+    /* 상단 고정 영역 (스텝 네비 + 진행률 바) */
+    .sticky-head {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .sticky-head .step-nav {
+      position: static;
+      box-shadow: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* 진행률 바 (STEP n/10) */
+    .progress-wrap {
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(60, 68, 74, 0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 0.45rem 1rem 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 5px;
+      background: var(--gray-100);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 10%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 0.25s ease;
+    }
+
+    .progress-label {
+      flex: 0 0 auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* 문항 블록 */
+    .q-block {
+      padding: 1.15rem 0 1.25rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .q-block:first-of-type {
+      padding-top: 0.25rem;
+    }
+
+    .q-block:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0.5rem;
+    }
+
+    .q-title {
+      display: block;
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .q-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-right: 6px;
+      vertical-align: 2px;
+    }
+
+    .req {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 5px;
+      margin-left: 5px;
+      vertical-align: 2px;
+      white-space: nowrap;
+    }
+
+    .opt {
+      display: inline-block;
+      background: var(--gray-100);
+      color: var(--text-muted);
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 5px;
+      margin-left: 5px;
+      vertical-align: 2px;
+      white-space: nowrap;
+    }
+
+    .q-help {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 0.6rem;
+    }
+
+    .q-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    /* 선택지 목록 */
+    .choice-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .choice-list.cols2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .choice-list.cols3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 420px) {
+      .choice-list.cols3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .choice {
+      position: relative;
+    }
+
+    .choice input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .choice label {
+      display: block;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .choice label:hover {
+      border-color: var(--accent);
+    }
+
+    .choice input:checked + label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .choice input:disabled + label {
+      opacity: 0.42;
+      cursor: not-allowed;
+      background: var(--gray-50);
+    }
+
+    .choice label .desc {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .choice input:checked + label .desc {
+      color: var(--teal-600);
+    }
+
+    .choice-list.center label {
+      text-align: center;
+    }
+
+    /* 예시 보기 아코디언 */
+    .example-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin: 6px 0 0 2px;
+      padding: 3px 9px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .example-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .example-body {
+      display: none;
+      margin: 7px 0 0;
+      padding: 0.7rem 0.9rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .example-body.show {
+      display: block;
+    }
+
+    .example-body p {
+      margin: 0;
+      font-size: 0.78rem;
+    }
+
+    /* 안내 박스 */
+    .info-box {
+      background: var(--gray-50);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .info-box .info-title {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .info-box ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.05rem;
+    }
+
+    .info-box li {
+      margin-bottom: 3px;
+    }
+
+    .warn-box {
+      background: #FEF4DA;
+      border: 1px solid #F5C13B;
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-size: 0.78rem;
+      color: #8A6410;
+      line-height: 1.7;
+      margin: 0.75rem 0 0;
+    }
+
+    .warn-box b {
+      color: #6E4F0B;
+    }
+
+    /* 셀렉트 / 텍스트영역 */
+    .form-group select,
+    .form-group input[type="email"] {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      color: var(--text-primary);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A8C8E' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      background-size: 16px;
+      padding-right: 2.4rem;
+    }
+
+    .form-group input[type="email"] {
+      background-image: none;
+      padding-right: 1rem;
+    }
+
+    .form-group select:focus,
+    .form-group input[type="email"]:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group select.error,
+    .form-group input[type="email"].error {
+      border-color: var(--red-400);
+    }
+
+    .form-group textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: #fff;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.15s;
+    }
+
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .inline-input {
+      width: 100%;
+      margin-top: 8px;
+      padding: 0.6rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .inline-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* 5점 척도 */
+    .scale5 .scale-header-row,
+    .scale5 .question-row {
+      grid-template-columns: 1fr repeat(5, 56px);
+    }
+
+    /* 5점 척도는 선택지가 하나 더 많아 좁은 화면에서 문항 칸이 지나치게 눌린다.
+       480px 이하에서는 문항 텍스트를 한 줄 위로 올리고 선택지를 그 아래에 균등 배치한다. */
+    @media (max-width: 480px) {
+      .scale5 .scale-header-row,
+      .scale5 .question-row {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .scale5 .scale-header-row span:first-child,
+      .scale5 .question-text {
+        grid-column: 1 / -1;
+      }
+
+      .scale5 .scale-header-row span:first-child {
+        padding-bottom: 0.4rem;
+      }
+
+      .scale5 .question-text {
+        padding: 0 0.25rem 0.55rem 0;
+      }
+
+      .scale5 .question-row {
+        min-height: 0 !important;
+        padding: 0.85rem 0;
+      }
+    }
+
+    .scale-group-label {
+      margin: 1.1rem 0 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    /* 동의 */
+    .consent-all {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--accent);
+      border-radius: 10px;
+      background: var(--accent-light);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      cursor: pointer;
+      margin-bottom: 0.9rem;
+    }
+
+    .consent-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.7rem;
+      background: #fff;
+    }
+
+    .consent-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.55rem;
+    }
+
+    .consent-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+      line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+
+    .consent-table th,
+    .consent-table td {
+      border: 1px solid var(--gray-100);
+      padding: 0.42rem 0.6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .consent-table th {
+      width: 5.6rem;
+      background: var(--gray-50);
+      color: var(--text-secondary);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .consent-table td {
+      color: var(--text-secondary);
+    }
+
+    .consent-body {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 0.65rem;
+    }
+
+    .consent-check {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding-top: 0.55rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .consent-check input:checked ~ span,
+    .consent-all input:checked ~ span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* 체크박스는 동의/전체선택 UI에서만 실제로 보이게 한다.
+       .choice 안의 input 은 라벨 카드로 대체되므로 숨김 상태를 유지해야 한다. */
+    .consent-all input[type="checkbox"],
+    .consent-check input[type="checkbox"] {
+      flex: 0 0 auto;
+      width: 19px;
+      height: 19px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    /* 유형 비교 카드 */
+    .plan-compare {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 520px) {
+      .plan-compare {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .plan-card {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .plan-card .plan-tag {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 99px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-card h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .plan-card ul {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* 최종 확인 요약 */
+    .summary-list {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr) auto;
+      gap: 0.5rem;
+      align-items: start;
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+
+    .summary-row .k {
+      color: var(--text-muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .summary-row .v {
+      color: var(--text-primary);
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .summary-row .edit {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 420px) {
+      .summary-row {
+        grid-template-columns: max-content minmax(0, 1fr) auto;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* 위기 안내 */
+    .crisis-box {
+      background: #FDECEC;
+      border: 1.5px solid var(--red-400);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.83rem;
+      color: var(--red-600);
+      line-height: 1.8;
+    }
+
+    .crisis-box .crisis-title {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .crisis-box .hotline {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 700;
+    }
+
+    .crisis-box a {
+      color: var(--red-600);
+    }
+
+    .resource-box {
+      background: var(--gray-50);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1.05rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-top: 1rem;
+    }
+
+    /* 버튼 */
+    .btn-row {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 8px;
+      margin-top: 1.5rem;
+    }
+
+    .btn-row .btn-primary {
+      margin-top: 0;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 0.875rem;
+      background: #fff;
+      color: var(--text-secondary);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* 안내 화면 히어로 배지 */
+    .hero-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.02em;
+    }
+
+    .free-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.7rem;
+    }
+
+    .free-chip {
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="logo-org-host">
+      <img class="logo-org" src="assets/sw.png" alt="서울시여성가족재단">
+    </div>
+    <a href="http://eap.mycoun21.com" target="_blank" rel="noopener noreferrer">
+      <img class="logo-provider" src="assets/mycoun.png" alt="마이카운슬러">
+    </a>
+  </header>
+
+  <div class="sticky-head">
+  <nav class="step-nav">
+    <div class="step-nav-inner">
+      <button class="step-btn active" data-page="0" onclick="tryGoPage(0)">
+        <div class="step-dot">1</div>동의
+      </button>
+      <button class="step-btn" data-page="1" onclick="tryGoPage(1)">
+        <div class="step-dot">2</div>자격확인
+      </button>
+      <button class="step-btn" data-page="3" onclick="tryGoPage(3)">
+        <div class="step-dot">3</div>기본정보
+      </button>
+      <button class="step-btn" data-page="4" onclick="tryGoPage(4)">
+        <div class="step-dot">4</div>돌봄유형
+      </button>
+      <button class="step-btn" data-page="5" onclick="tryGoPage(5)">
+        <div class="step-dot">5</div>돌봄상황
+      </button>
+      <button class="step-btn" data-page="6" onclick="tryGoPage(6)">
+        <div class="step-dot">6</div>돌봄부담
+      </button>
+      <button class="step-btn" data-page="7" onclick="tryGoPage(7)">
+        <div class="step-dot">7</div>마음상태
+      </button>
+      <button class="step-btn" data-page="11" onclick="tryGoPage(11)">
+        <div class="step-dot">8</div>참여유형
+      </button>
+      <button class="step-btn" data-page="12" onclick="tryGoPage(12)">
+        <div class="step-dot">9</div>상담신청
+      </button>
+      <button class="step-btn" data-page="13" onclick="tryGoPage(13)">
+        <div class="step-dot">10</div>확인·제출
+      </button>
+    </div>
+  </nav>
+
+  <div class="progress-wrap">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-label" id="progress-label">STEP 1 / 10</span>
+  </div>
+  </div><!-- /.sticky-head -->
+
+  <div class="page-wrap">
+
+    <!-- ══════════ PAGE 0 · STEP 1 — 안내 + 개인정보 동의 ══════════ -->
+    <div class="page active" id="page-0">
+      <div class="card">
+        <div class="intro-hero">
+          <span class="hero-badge">서울시여성가족재단 지원사업</span>
+          <h1>서울시민 마음잡고 프로젝트<br>참여 신청</h1>
+          <p
+            style="margin-top:0.75rem; font-size:0.82rem; color:rgba(255,255,255,0.88); line-height:1.8; word-break:keep-all;">
+            두 사람 이상을 동시에 돌보고 계신 분을 위한 무료 심리상담 지원사업입니다.<br>신청서 작성에는 10분 정도가 걸립니다.</p>
+        </div>
+
+        <div class="topic-group">
+          <div class="intro-section">
+            <h2>사업 안내</h2>
+            <ul class="feature-list feature-list-numbered">
+              <li><strong>대상</strong> 서울에 거주하거나 서울에서 생활하시는 분 중, 두 세대 이상에 걸쳐 가족 2명 이상을 3개월 이상 돌보고 계신 분</li>
+              <li><strong>지원 내용</strong> 유형 1 — 1:1 상담 5회 / 유형 2 — 1:1 상담 3회 + 집단상담(자조모임) 1회 중 선택</li>
+              <li><strong>비용</strong> 전액 무료 (본인 부담금 없음)</li>
+              <li><strong>상담 방식</strong> 대면 · 화상 · 전화 중 선택, 평일 21시까지와 주말 가능</li>
+            </ul>
+            <div class="free-chips">
+              <span class="free-chip">전액 무료</span>
+              <span class="free-chip">완전 비밀보장</span>
+              <span class="free-chip">신청 10분</span>
+              <span class="free-chip">야간·주말·비대면</span>
+            </div>
+          </div>
+
+          <div class="intro-section">
+            <h2>마음 상태 검사 안내</h2>
+            <p>신청서 안에는 마음 상태를 확인하는 사전 검사가 포함되어 있습니다. 국립정신건강센터와 대한신경정신의학회 기반의 한국형 정신건강 척도를 활용합니다.</p>
+            <ul class="scale-list" style="margin-top:0.75rem;">
+              <li><span class="scale-badge">NDS</span>표준형 한국인 우울 척도 (National Depression Scale)</li>
+              <li><span class="scale-badge">NAS</span>표준형 한국인 불안 척도 (National Anxiety Scale)</li>
+              <li><span class="scale-badge">NSS</span>표준형 한국인 스트레스 척도 (National Stress Scale)</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.78rem; color:var(--text-muted);">출처: 보건복지부 국립정신건강센터</p>
+          </div>
+
+          <div class="intro-section">
+            <h2>개인정보 수집·이용 동의</h2>
+            <p style="margin-bottom:0.85rem;">신청과 상담 진행을 위해 아래 정보의 수집·이용에 동의해 주세요. 수집된 정보는 본 사업 목적 외로는 사용하지 않으며, 사업 종료 후 지체 없이 파기합니다.</p>
+
+            <label class="consent-all">
+              <input type="checkbox" id="agree-all" onchange="toggleAgreeAll(this)">
+              <span>아래 세 항목에 모두 동의합니다</span>
+            </label>
+
+            <div class="consent-item">
+              <p class="consent-title">1. 개인정보 수집·이용 동의 <span class="req">필수</span></p>
+              <table class="consent-table">
+                <tr>
+                  <th>수집 항목</th>
+                  <td>성명, 휴대전화번호, 이메일(선택), 거주 자치구, 성별, 출생연도, 취업 여부, 돌봄 상황 관련 응답</td>
+                </tr>
+                <tr>
+                  <th>이용 목적</th>
+                  <td>상담 대상자 선정 및 유형 분류, 상담사 배정 및 예약 안내, 만족도 조사</td>
+                </tr>
+                <tr>
+                  <th>보유 기간</th>
+                  <td>과업 종료 후 발주기관이 지정하는 시점까지 보유 후 파기</td>
+                </tr>
+              </table>
+              <label class="consent-check">
+                <input type="checkbox" class="agree-item" id="agree-1" onchange="syncAgreeAll()">
+                <span>위 내용에 동의합니다</span>
+              </label>
+            </div>
+
+            <div class="consent-item">
+              <p class="consent-title">2. 민감정보 수집·이용 동의 <span class="req">필수</span></p>
+              <table class="consent-table">
+                <tr>
+                  <th>수집 항목</th>
+                  <td>심리검사 응답 및 결과, 상담 기록</td>
+                </tr>
+                <tr>
+                  <th>근거</th>
+                  <td>「개인정보 보호법」 제23조에 따라 일반 개인정보와 분리하여 동의를 받습니다</td>
+                </tr>
+                <tr>
+                  <th>이용 목적</th>
+                  <td>심리검사 실시·해석, 상담 진행, 효과성 분석(개인 식별 불가능한 통계 형태)</td>
+                </tr>
+              </table>
+              <label class="consent-check">
+                <input type="checkbox" class="agree-item" id="agree-2" onchange="syncAgreeAll()">
+                <span>위 내용에 동의합니다</span>
+              </label>
+            </div>
+
+            <div class="consent-item">
+              <p class="consent-title">3. 상담 진행 및 비밀보장 안내 확인 <span class="req">필수</span></p>
+              <p class="consent-body">
+                상담 내용은 담당 상담사와 지정된 연구 담당자 외에는 열람할 수 없으며, 발주기관에도 개인 단위로 제공되지 않습니다.<br>
+                다만 <b>본인 또는 타인의 생명·안전에 위험이 있다고 판단되는 경우, 법령상 신고 의무가 발생하는 경우</b>에 한하여 비밀보장의 예외가 적용됩니다.
+              </p>
+              <label class="consent-check">
+                <input type="checkbox" class="agree-item" id="agree-3" onchange="syncAgreeAll()">
+                <span>위 내용을 확인하였습니다</span>
+              </label>
+            </div>
+
+            <p class="error-msg" id="err-agree">세 항목에 모두 동의하셔야 다음 단계로 이동할 수 있습니다.</p>
+
+          </div>
+        </div>
+
+        <div class="intro-section">
+          <button class="btn-primary" style="margin-top:0;" onclick="validateConsent()">동의하고 신청 시작하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 1 · STEP 2 — 참여 자격 확인 ══════════ -->
+    <div class="page" id="page-1">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">참여 자격 확인</p>
+          <p class="section-subtitle">본 사업은 두 사람 이상을 동시에 돌보고 계신 분을 위한 사업입니다. 아래 5개 항목을 확인해 주세요.</p>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q1</span>현재 서로 다른 세대에 속한 가족 2명 이상을 동시에 돌보고 계신가요?<span class="req">필수</span></p>
+            <p class="q-help">💬 예시: 자녀 + 부모님 / 배우자 + 부모님 / 부모님 + 조부모님</p>
+            <div class="choice-list cols2 center">
+              <div class="choice"><input type="radio" name="q1" id="q1-1" value="1"><label for="q1-1">네</label></div>
+              <div class="choice"><input type="radio" name="q1" id="q1-2" value="2"><label for="q1-2">아니요</label></div>
+            </div>
+            <p class="error-msg" id="err-q1">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q2</span>돌보고 계신 분 중 한 분 이상에 대해, 본인이 주된 돌봄 역할을 하고 계신가요?<span class="req">필수</span></p>
+            <p class="q-help">💬 다른 가족과 돌봄을 나누어 하고 계셔도, 본인이 가장 많은 역할을 맡고 있다면 '네'를 선택해 주세요.</p>
+            <div class="choice-list cols2 center">
+              <div class="choice"><input type="radio" name="q2" id="q2-1" value="1"><label for="q2-1">네</label></div>
+              <div class="choice"><input type="radio" name="q2" id="q2-2" value="2"><label for="q2-2">아니요</label></div>
+            </div>
+            <p class="error-msg" id="err-q2">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q3</span>두 분 이상을 동시에 돌보기 시작한 지 얼마나 되셨나요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q3" id="q3-1" value="1"><label for="q3-1">3개월 미만</label></div>
+              <div class="choice"><input type="radio" name="q3" id="q3-2" value="2"><label for="q3-2">3개월 ~ 1년 미만</label></div>
+              <div class="choice"><input type="radio" name="q3" id="q3-3" value="3"><label for="q3-3">1년 ~ 3년 미만</label></div>
+              <div class="choice"><input type="radio" name="q3" id="q3-4" value="4"><label for="q3-4">3년 ~ 5년 미만</label></div>
+              <div class="choice"><input type="radio" name="q3" id="q3-5" value="5"><label for="q3-5">5년 이상</label></div>
+            </div>
+            <p class="error-msg" id="err-q3">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q4</span>서울시 25개 자치구에 거주하고 계시거나, 서울에서 주로 생활하고 계신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q4" id="q4-1" value="1"><label for="q4-1">서울시에 거주하고 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q4" id="q4-2" value="2"><label for="q4-2">서울시에 거주하지는 않지만 직장·학업 등으로 서울에서 주로 생활합니다</label></div>
+              <div class="choice"><input type="radio" name="q4" id="q4-3" value="3"><label for="q4-3">해당 없음</label></div>
+            </div>
+            <p class="error-msg" id="err-q4">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q5</span>만 나이가 어떻게 되시나요?<span class="req">필수</span></p>
+            <p class="q-help">사용 척도(NDS·NAS·NSS)가 만 19~65세를 대상으로 타당화되어 있어 연령을 확인합니다.</p>
+            <div class="choice-list cols3 center">
+              <div class="choice"><input type="radio" name="q5" id="q5-1" value="1"><label for="q5-1">만 19세 미만</label></div>
+              <div class="choice"><input type="radio" name="q5" id="q5-2" value="2"><label for="q5-2">만 19 ~ 64세</label></div>
+              <div class="choice"><input type="radio" name="q5" id="q5-3" value="3"><label for="q5-3">만 65세 이상</label></div>
+            </div>
+            <p class="error-msg" id="err-q5">선택해 주세요.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(0)">이전</button>
+            <button class="btn-primary" onclick="validateEligibility()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 2 — 부적격 안내 (분기) ══════════ -->
+    <div class="page" id="page-2">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">참여 조건 확인 결과</p>
+          <p class="section-subtitle">응답해 주셔서 감사합니다.</p>
+
+          <div class="info-box">
+            <span class="info-title">아쉽지만 이번 사업의 참여 조건에는 해당하지 않으시는 것으로 확인됩니다.</span>
+            다만 응답만으로 판단이 어려운 경우도 있으니, 상황을 조금 더 알려주시면 확인해 드리겠습니다.<br>
+            <b>문의: 1877-0410</b> (평일 09:00~18:00)
+          </div>
+
+          <div class="resource-box">
+            <b>이용하실 수 있는 무료 상담 자원을 안내해 드립니다.</b><br>
+            · 서울시 자치구 정신건강복지센터<br>
+            · 자치구 가족센터 상담 서비스<br>
+            · 정신건강상담전화 <b>1577-0199</b> (24시간)
+          </div>
+
+          <button class="btn-secondary" style="margin-top:1.5rem;" onclick="goPage(1)">응답 다시 확인하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 3 · STEP 3 — 기본 정보 ══════════ -->
+    <div class="page" id="page-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">기본 정보</p>
+          <p class="section-subtitle">수집된 정보는 상담사 배정과 예약 안내 목적 외에는 사용되지 않습니다</p>
+
+          <div class="form-group">
+            <label for="inp-name">Q6. 성명 <span class="req">필수</span></label>
+            <input type="text" id="inp-name" placeholder="이름을 입력해 주세요">
+            <p class="error-msg" id="err-name">이름을 입력해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="inp-phone">Q7. 휴대전화번호 <span class="req">필수</span></label>
+            <p class="hint">상담 예약과 안내 알림 발송에 사용됩니다. 숫자만 입력하시면 자동으로 하이픈이 붙습니다.</p>
+            <input type="tel" id="inp-phone" placeholder="010-0000-0000" maxlength="13" inputmode="numeric"
+              oninput="formatPhone(this)">
+            <p class="error-msg" id="err-phone">올바른 휴대전화번호를 입력해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="inp-email">Q8. 이메일 <span class="opt">선택</span></label>
+            <p class="hint">검사 결과 리포트 수신용입니다.</p>
+            <input type="email" id="inp-email" placeholder="example@email.com">
+            <p class="error-msg" id="err-email">이메일 형식을 확인해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label>Q9. 성별 <span class="req">필수</span></label>
+            <div class="gender-options">
+              <div class="job-option">
+                <input type="radio" name="gender" id="gender-f" value="여">
+                <label for="gender-f">여성</label>
+              </div>
+              <div class="job-option">
+                <input type="radio" name="gender" id="gender-m" value="남">
+                <label for="gender-m">남성</label>
+              </div>
+            </div>
+            <p class="error-msg" id="err-gender">성별을 선택해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="inp-birth">Q10. 출생연도 <span class="req">필수</span></label>
+            <select id="inp-birth">
+              <option value="">선택해 주세요</option>
+            </select>
+            <p class="error-msg" id="err-birth">출생연도를 선택해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="inp-district">Q11. 거주(생활) 자치구 <span class="req">필수</span></label>
+            <select id="inp-district">
+              <option value="">선택해 주세요</option>
+            </select>
+            <p class="error-msg" id="err-district">자치구를 선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q12</span>현재 일을 하고 계신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q12" id="q12-1" value="1"><label for="q12-1">직장에 다니고 있습니다 (전일제)</label></div>
+              <div class="choice"><input type="radio" name="q12" id="q12-2" value="2"><label for="q12-2">직장에 다니고 있습니다 (시간제·교대·유연근무)</label></div>
+              <div class="choice"><input type="radio" name="q12" id="q12-3" value="3"><label for="q12-3">자영업·프리랜서</label></div>
+              <div class="choice"><input type="radio" name="q12" id="q12-4" value="4"><label for="q12-4">일을 하고 있지 않습니다</label></div>
+              <div class="choice"><input type="radio" name="q12" id="q12-5" value="5"><label for="q12-5">휴직 중입니다 (육아휴직·가족돌봄휴직 등)</label></div>
+            </div>
+            <p class="error-msg" id="err-q12">선택해 주세요.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(1)">이전</button>
+            <button class="btn-primary" onclick="validateBasic()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 4 · STEP 4 — 이중돌봄 유형 확인 ══════════ -->
+    <div class="page" id="page-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">이중돌봄 유형 확인</p>
+          <p class="section-subtitle">돌보고 계신 분들 중 누구에게 가장 많은 시간과 신경을 쓰고 계신지 알려주세요</p>
+
+          <div class="info-box">
+            <span class="info-title">주된 돌봄 대상은 이렇게 선택해 주세요</span>
+            <b>'돌봄'에는 아래 네 가지가 모두 포함됩니다.</b>
+            <ul>
+              <li><b>신체적 지원</b> — 식사·이동·위생·투약 등 직접 돌봄</li>
+              <li><b>정서적 지원</b> — 말벗, 정서적 지지, 곁을 지키는 일</li>
+              <li><b>경제적 지원</b> — 생활비·의료비 등 비용 부담</li>
+              <li><b>서비스 이용 지원·관리</b> — 제도·서비스 탐색, 신청·연결·조정·유지·관리</li>
+            </ul>
+            <p style="margin-top:0.55rem; font-size:0.8rem; line-height:1.75;">
+              두 분 이상을 돌보고 계신 경우, 이 가운데 <b>지원하는 비율이 가장 높은 분</b>을 <b>주된 돌봄 대상(1순위)</b>으로,
+              함께 돌보고 계신 다른 분을 <b>추가 돌봄 대상(2순위)</b>으로 선택해 주세요.
+              함께 살지 않으셔도, 다른 가족과 돌봄을 나누어 하고 계셔도 해당됩니다.
+            </p>
+            <button class="example-toggle" onclick="toggleExample('help-priority')">? 어떤 분을 1순위로 선택해야 할지 모르겠어요</button>
+            <div class="example-body" id="help-priority">
+              <p>아래 세 가지를 떠올려 보시면 대부분 정리됩니다.</p>
+              <p><b>1. 시간</b> — 하루 중 누구를 위해 더 오래 움직이시나요?<br>
+                <b>2. 신경</b> — 자리에 없을 때 누구 걱정이 더 자주 떠오르시나요?<br>
+                <b>3. 책임</b> — 갑작스러운 일이 생겼을 때 누구를 먼저 챙기시나요?</p>
+              <p>세 가지가 서로 다르다면 <b>하루 중 시간을 더 많이 쓰는 쪽</b>을 1순위로 선택해 주세요. 정답이 정해져 있는 문항이 아니며, 선택하신 대로 반영됩니다.</p>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q13</span>지금 가장 많은 시간과 신경을 쓰고 계신 분은 누구인가요?<span class="req">필수</span></p>
+            <p class="q-help">두 분 이상을 돌보고 계시더라도, 그중 지원하는 비율이 가장 높은 <b>한 분</b>만 선택해 주세요.</p>
+            <div class="choice-list" id="q13-list"></div>
+            <div class="warn-box">
+              ⚠️ 만 65세 이상이면서 치매·질환이 있는 경우처럼 두 가지에 모두 해당하신다면, <b>'돌봄이 필요해진 주된 이유'</b>에 가까운 쪽을 선택해 주세요.<br>
+              · 나이가 들며 거동·인지가 어려워진 경우 → <b>고령 가족</b><br>
+              · 특정 질병이나 장애로 돌봄이 필요해진 경우 → <b>장애·질환 가족</b>
+            </div>
+            <p class="error-msg" id="err-q13">주된 돌봄 대상을 선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q14</span><span id="q14-label">추가로 돌보고 계신 가족은 누구인가요?</span><span class="req">필수</span></p>
+            <p class="q-help" id="q14-hint">Q13을 먼저 선택하시면 선택지가 나타납니다.</p>
+            <div class="choice-list" id="q14-list"></div>
+            <p class="error-msg" id="err-q14">추가로 돌보고 계신 가족을 선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q15</span>그 밖에 돌보고 계신 가족이 있다면 모두 선택해 주세요.<span class="opt">선택</span></p>
+            <p class="q-help">세 분 이상을 돌보고 계신 경우에만 응답해 주시면 됩니다.<br>💬 예: 미성년 자녀(1순위) + 고령 부모(2순위) + 고령 조부모(3순위) → '고령 가족' 선택</p>
+            <div class="choice-list" id="q15-list"></div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(3)">이전</button>
+            <button class="btn-primary" onclick="validateCareType()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 5 · STEP 5 — 돌봄 상황 ══════════ -->
+    <div class="page" id="page-5">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">돌봄 상황</p>
+          <p class="section-subtitle">돌봄 상황은 사람마다 크게 다릅니다. 아래 정보는 상담 배정과 결과 분석에만 사용됩니다.</p>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q16</span>현재 돌보고 계신 가족은 모두 몇 분인가요?<span class="req">필수</span></p>
+            <div class="choice-list cols2 center">
+              <div class="choice"><input type="radio" name="q16" id="q16-1" value="1"><label for="q16-1">2명</label></div>
+              <div class="choice"><input type="radio" name="q16" id="q16-2" value="2"><label for="q16-2">3명</label></div>
+              <div class="choice"><input type="radio" name="q16" id="q16-3" value="3"><label for="q16-3">4명</label></div>
+              <div class="choice"><input type="radio" name="q16" id="q16-4" value="4"><label for="q16-4">5명 이상</label></div>
+            </div>
+            <p class="error-msg" id="err-q16">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q17</span>돌봄 대상자와 함께 살고 계신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q17" id="q17-1" value="1"><label for="q17-1">모두 함께 살고 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q17" id="q17-2" value="2"><label for="q17-2">일부만 함께 살고 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q17" id="q17-3" value="3"><label for="q17-3">모두 따로 살고 있습니다</label></div>
+            </div>
+            <p class="error-msg" id="err-q17">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q18</span>돌봄에 쓰는 시간은 하루 평균 어느 정도인가요?<span class="req">필수</span></p>
+            <div class="choice-list cols2 center">
+              <div class="choice"><input type="radio" name="q18" id="q18-1" value="1"><label for="q18-1">1시간 미만</label></div>
+              <div class="choice"><input type="radio" name="q18" id="q18-2" value="2"><label for="q18-2">1 ~ 3시간</label></div>
+              <div class="choice"><input type="radio" name="q18" id="q18-3" value="3"><label for="q18-3">3 ~ 5시간</label></div>
+              <div class="choice"><input type="radio" name="q18" id="q18-4" value="4"><label for="q18-4">5 ~ 8시간</label></div>
+              <div class="choice"><input type="radio" name="q18" id="q18-5" value="5"><label for="q18-5">8시간 이상</label></div>
+              <div class="choice"><input type="radio" name="q18" id="q18-6" value="6"><label for="q18-6">사실상 하루 종일</label></div>
+            </div>
+            <p class="error-msg" id="err-q18">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q19</span>어떤 형태의 돌봄을 하고 계신가요?<span class="req">복수 선택</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="checkbox" name="q19" id="q19-1" value="1"><label for="q19-1">신체적 지원<span class="desc">식사·이동·위생·투약 등 직접 돌봄</span></label></div>
+              <div class="choice"><input type="checkbox" name="q19" id="q19-2" value="2"><label for="q19-2">정서적 지원<span class="desc">말벗, 정서적 지지, 곁을 지키는 일</span></label></div>
+              <div class="choice"><input type="checkbox" name="q19" id="q19-3" value="3"><label for="q19-3">경제적 지원<span class="desc">생활비·의료비 등 비용 부담</span></label></div>
+              <div class="choice"><input type="checkbox" name="q19" id="q19-4" value="4"><label for="q19-4">서비스 이용 지원·관리<span class="desc">제도·서비스 탐색, 신청·연결·조정·유지·관리</span></label></div>
+            </div>
+            <p class="error-msg" id="err-q19">한 가지 이상 선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q20</span>돌봄을 함께 나눌 다른 가족이나 도움이 있으신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q20" id="q20-1" value="1"><label for="q20-1">함께 나누는 가족이 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q20" id="q20-2" value="2"><label for="q20-2">외부 서비스(요양보호사·돌봄 서비스 등)의 도움을 받고 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q20" id="q20-3" value="3"><label for="q20-3">가족과 외부 서비스 모두 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q20" id="q20-4" value="4"><label for="q20-4">도움 없이 혼자 감당하고 있습니다</label></div>
+            </div>
+            <p class="error-msg" id="err-q20">선택해 주세요.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(4)">이전</button>
+            <button class="btn-primary" onclick="validateCareSituation()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 6 · STEP 6 — 돌봄 부담·소진 (20문항) ══════════ -->
+    <div class="page scale5" id="page-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">돌봄 부담·소진</p>
+          <p class="section-subtitle">총 20문항</p>
+
+          <div class="instruction-box">
+            최근 <b>한 달</b> 동안의 상황을 떠올리며 답해 주세요. 정답은 없습니다.
+          </div>
+
+          <div class="alert-banner" id="alert-burden">모든 문항에 응답해 주세요.</div>
+
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지 않다</span>
+            <span>그렇지<br>않다</span>
+            <span>보통<br>이다</span>
+            <span>그렇다</span>
+            <span>매우<br>그렇다</span>
+          </div>
+
+          <div id="burden-questions"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(5)">이전</button>
+            <button class="btn-primary" onclick="validateScale('burden', 20, 7)">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 7 · STEP 7-1 — 우울 (NDS) ══════════ -->
+    <div class="page" id="page-7">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">마음 상태 체크 — 한국인 우울 척도 (NDS)</p>
+          <p class="section-subtitle">총 12문항</p>
+
+          <div class="instruction-box">
+            국립정신건강센터가 개발하고 대한신경정신의학회의 인증을 받은 검사입니다.<br>
+            <b>최근 2주간</b> 각 항목을 얼마나 자주 경험하셨는지 선택해 주세요.
+          </div>
+
+          <div class="alert-banner" id="alert-depression">모든 문항에 응답해 주세요.</div>
+
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지 않다</span>
+            <span>가끔<br>그렇다</span>
+            <span>자주<br>그렇다</span>
+            <span>거의 매일<br>그렇다</span>
+          </div>
+
+          <div id="depression-questions"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(6)">이전</button>
+            <button class="btn-primary" onclick="validateScale('depression', 12, 8)">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 8 · STEP 7-2 — 불안 (NAS) ══════════ -->
+    <div class="page" id="page-8">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">마음 상태 체크 — 한국인 불안 척도 (NAS)</p>
+          <p class="section-subtitle">총 11문항</p>
+
+          <div class="instruction-box">
+            <b>최근 2주간</b> 각 항목을 얼마나 자주 경험하셨는지 선택해 주세요.
+          </div>
+
+          <div class="alert-banner" id="alert-anxiety">모든 문항에 응답해 주세요.</div>
+
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지 않다</span>
+            <span>가끔<br>그렇다</span>
+            <span>자주<br>그렇다</span>
+            <span>거의 매일<br>그렇다</span>
+          </div>
+
+          <div id="anxiety-questions"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(7)">이전</button>
+            <button class="btn-primary" onclick="validateScale('anxiety', 11, 9)">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 9 · STEP 7-3 — 스트레스 (NSS) ══════════ -->
+    <div class="page" id="page-9">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">마음 상태 체크 — 한국인 스트레스 척도 (NSS)</p>
+          <p class="section-subtitle">총 11문항</p>
+
+          <div class="instruction-box">
+            <b>최근 2주간</b> 각 항목을 얼마나 자주 경험하셨는지 선택해 주세요.
+          </div>
+
+          <div class="alert-banner" id="alert-stress">모든 문항에 응답해 주세요.</div>
+
+          <div class="scale-header-row">
+            <span>문항</span>
+            <span>전혀<br>그렇지 않다</span>
+            <span>가끔<br>그렇다</span>
+            <span>자주<br>그렇다</span>
+            <span>거의 매일<br>그렇다</span>
+          </div>
+
+          <div id="stress-questions"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(8)">이전</button>
+            <button class="btn-primary" onclick="afterStress()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 10 · STEP 7-4 — 안전 확인 문항 (조건부) ══════════ -->
+    <div class="page" id="page-10">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">몇 가지만 더 여쭙겠습니다</p>
+          <p class="section-subtitle">답해 주셔서 감사합니다.</p>
+
+          <div class="instruction-box">
+            조금 더 정확히 살펴보기 위해 몇 가지만 더 여쭙겠습니다.<br>
+            <b>어떻게 답하셔도 신청에는 영향이 없으며</b>, 도움이 되는 방법을 함께 찾기 위한 질문입니다.
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">S1</span>최근 2주간 그런 생각이 얼마나 자주 들었나요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="s1" id="s1-1" value="1"><label for="s1-1">한두 번</label></div>
+              <div class="choice"><input type="radio" name="s1" id="s1-2" value="2"><label for="s1-2">일주일에 며칠</label></div>
+              <div class="choice"><input type="radio" name="s1" id="s1-3" value="3"><label for="s1-3">거의 매일</label></div>
+            </div>
+            <p class="error-msg" id="err-s1">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">S2</span>그런 생각이 들 때, 실제로 어떻게 할지까지 구체적으로 생각해 본 적이 있나요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="s2" id="s2-1" value="1"><label for="s2-1">없다</label></div>
+              <div class="choice"><input type="radio" name="s2" id="s2-2" value="2"><label for="s2-2">막연히 생각해 본 적은 있다</label></div>
+              <div class="choice"><input type="radio" name="s2" id="s2-3" value="3"><label for="s2-3">구체적으로 생각해 본 적이 있다</label></div>
+            </div>
+            <p class="error-msg" id="err-s2">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">S3</span>지금 그런 생각을 실행할 계획을 가지고 계신가요?<span class="req">필수</span></p>
+            <div class="choice-list cols2 center">
+              <div class="choice"><input type="radio" name="s3" id="s3-1" value="1"><label for="s3-1">아니다</label></div>
+              <div class="choice"><input type="radio" name="s3" id="s3-2" value="2"><label for="s3-2">그렇다</label></div>
+            </div>
+            <p class="error-msg" id="err-s3">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">S4</span>과거에 실제로 시도한 적이 있나요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="s4" id="s4-1" value="1"><label for="s4-1">없다</label></div>
+              <div class="choice"><input type="radio" name="s4" id="s4-2" value="2"><label for="s4-2">1년 이전에 있다</label></div>
+              <div class="choice"><input type="radio" name="s4" id="s4-3" value="3"><label for="s4-3">최근 1년 이내에 있다</label></div>
+            </div>
+            <p class="error-msg" id="err-s4">선택해 주세요.</p>
+          </div>
+
+          <div id="crisis-alert"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(9)">이전</button>
+            <button class="btn-primary" onclick="validateSafety()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 11 · STEP 8 — 참여 유형 선택 ══════════ -->
+    <div class="page" id="page-11">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">참여 유형 선택</p>
+          <p class="section-subtitle">두 가지 유형 중 하나를 선택해 참여하실 수 있습니다. 어느 쪽을 선택하셔도 모두 무료입니다.</p>
+
+          <div class="plan-compare">
+            <div class="plan-card">
+              <span class="plan-tag">유형 1</span>
+              <h4>1:1 상담 5회</h4>
+              <ul>
+                <li>1회 50분 · 총 5회</li>
+                <li>집단상담 없음</li>
+                <li>나에게만 집중해 차분히 이야기하고 싶은 분</li>
+                <li>일정을 자주 조정해야 하는 분</li>
+              </ul>
+            </div>
+            <div class="plan-card">
+              <span class="plan-tag">유형 2</span>
+              <h4>1:1 상담 3회 + 집단상담 1회</h4>
+              <ul>
+                <li>1:1 1회 50분 · 총 3회</li>
+                <li>집단상담(자조모임) 1회 4시간 · 15명 내외</li>
+                <li>같은 상황에 있는 분들과 마음을 나누고 싶은 분</li>
+                <li>혼자 삼켜온 이야기를 꺼내고 싶은 분</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q21</span>어떤 유형으로 참여하고 싶으신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q21" id="q21-1" value="1" onchange="onQ21Change()"><label for="q21-1">유형 1 — 1:1 상담 5회</label></div>
+              <div class="choice"><input type="radio" name="q21" id="q21-2" value="2" onchange="onQ21Change()"><label for="q21-2">유형 2 — 1:1 상담 3회 + 집단상담(자조모임) 1회</label></div>
+              <div class="choice"><input type="radio" name="q21" id="q21-3" value="3" onchange="onQ21Change()"><label for="q21-3">둘 다 상관없습니다<span class="desc">대조군 균형을 고려해 운영팀이 배정해 드립니다. 배정 후 변경도 가능합니다.</span></label></div>
+            </div>
+            <p class="error-msg" id="err-q21">참여 유형을 선택해 주세요.</p>
+          </div>
+
+          <!-- Q21-1 · 집단상담 미선택 사유 (Q21 = ①일 때만) -->
+          <div class="q-block" id="q21a-block" style="display:none;">
+            <p class="q-title"><span class="q-badge">Q21-1</span>집단상담(자조모임)을 <b>선택하지 않으신 이유</b>는 무엇인가요?<span class="req">최대 2개</span></p>
+            <p class="q-help">어떤 이유든 괜찮습니다. 앞으로 프로그램을 더 잘 만들기 위해 여쭙습니다.</p>
+            <div class="choice-list" id="q21a-list"></div>
+            <input type="text" class="inline-input" id="q21a-etc-text" placeholder="기타 사유를 적어 주세요" style="display:none;">
+            <p class="q-note" id="q21a-count">0 / 2개 선택</p>
+            <p class="q-help" id="q21a-info7" style="display:none; margin-top:0.5rem;">💬 집단상담 안내를 문자로 보내드립니다. 읽어보시고 마음이 바뀌시면 언제든 변경하실 수 있습니다.</p>
+            <p class="error-msg" id="err-q21a">한 가지 이상 선택해 주세요.</p>
+          </div>
+
+          <!-- Q21-2 · 집단상담 선택 사유 (Q21 = ②일 때만) -->
+          <div class="q-block" id="q21b-block" style="display:none;">
+            <p class="q-title"><span class="q-badge">Q21-2</span>집단상담(자조모임)을 <b>선택하신 이유</b>는 무엇인가요?<span class="req">최대 2개</span></p>
+            <div class="choice-list" id="q21b-list"></div>
+            <input type="text" class="inline-input" id="q21b-etc-text" placeholder="기타 이유를 적어 주세요" style="display:none;">
+            <p class="q-note" id="q21b-count">0 / 2개 선택</p>
+            <p class="error-msg" id="err-q21b">한 가지 이상 선택해 주세요.</p>
+          </div>
+
+          <!-- Q21-3 · 녹음 안내 / Q21-4 · 녹음 동의 (Q21 = ② 또는 ③) -->
+          <!-- 집단 조건(Q22~Q26)을 묻기 전에 먼저 받는다. 동의하지 않는 분이
+               앞선 응답을 모두 채운 뒤 참여 불가를 마주하는 순서를 피하기 위함. -->
+          <div id="rec-block" style="display:none;">
+            <div class="consent-item">
+              <p class="consent-title">🎙️ 집단상담은 대화 내용을 녹음합니다 <span class="req">필수</span></p>
+              <p class="consent-body">
+                집단상담에서 나눠 주신 이야기는 <b>이중돌봄 시민에게 어떤 지원이 필요한지</b>를 서울시 정책에 반영하기 위한 자료로 쓰입니다.
+                그래서 진행 과정을 녹음하며, <b>녹음 동의는 집단상담 참여에 반드시 필요합니다.</b>
+              </p>
+              <table class="consent-table">
+                <tr>
+                  <th>녹음 목적</th>
+                  <td>이중돌봄을 하게 된 경위, 겪고 계신 어려움, 필요한 지원을 정리하여 최종 보고서와 2027년 정책 연구의 기초 자료로 활용</td>
+                </tr>
+                <tr>
+                  <th>녹음 방식</th>
+                  <td>녹음기 <b>한 대를 탁자 가운데 두고</b> 진행합니다. 개인별 마이크는 사용하지 않으며, <b>영상 촬영은 하지 않습니다</b></td>
+                </tr>
+                <tr>
+                  <th>녹음 범위</th>
+                  <td>집단상담 진행 시간 전체 (1:1 상담은 <b>녹음하지 않습니다</b>)</td>
+                </tr>
+                <tr>
+                  <th>기록 방식</th>
+                  <td>이름·직장·구체적 지명 등 <b>개인을 알아볼 수 있는 내용은 모두 지우고</b> 정리합니다</td>
+                </tr>
+                <tr>
+                  <th>보관 기간</th>
+                  <td>분석이 끝나고 사업이 종료되는 즉시 <b>파기</b>하며, 파기 사실을 서울시여성가족재단에 공문으로 알립니다</td>
+                </tr>
+                <tr>
+                  <th>열람 권한</th>
+                  <td>암호화하여 보관하며, 지정된 연구 담당자만 열람할 수 있습니다</td>
+                </tr>
+                <tr>
+                  <th>동의 필요</th>
+                  <td>녹음은 집단상담 운영에 <b>반드시 필요한 절차</b>입니다. 동의해 주셔야 집단상담에 참여하실 수 있습니다</td>
+                </tr>
+                <tr>
+                  <th>다른 방법</th>
+                  <td>녹음이 부담되신다면 <b>1:1 상담 5회(유형 1)</b>로 바꾸어 참여하실 수 있습니다. 1:1 상담은 녹음하지 않습니다</td>
+                </tr>
+              </table>
+              <label class="consent-check">
+                <input type="checkbox" id="rec-consent" onchange="onRecConsentChange()">
+                <span>집단상담 진행 내용의 녹음 및 위 목적의 활용에 동의합니다</span>
+              </label>
+              <p class="q-note" style="margin-top:0.6rem;">
+                💬 녹음이 부담되신다면 <b>1:1 상담 5회(유형 1)</b>로 변경하실 수 있습니다.
+                <button class="example-toggle" style="margin-left:2px;" onclick="switchToType1(true)">유형 1로 변경하기</button>
+              </p>
+              <p class="q-note">※ 집단상담 당일에 서면 동의서를 한 번 더 작성하시게 됩니다.</p>
+              <p class="error-msg" id="err-rec">녹음에 동의하셔야 집단상담 조건을 입력하실 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div id="group-block" style="display:none;">
+            <div class="info-box">
+              <span class="info-title">ⓘ 아래 내용은 아직 정해지지 않았습니다</span>
+              집단상담(자조모임)의 <b>날짜 · 시간 · 진행 방식(대면/비대면) · 장소는 모두 확정되지 않았습니다.</b>
+              신청해 주신 분들의 응답을 <b>모두 모은 뒤</b>, 가장 많은 분이 참석하실 수 있는 조건으로 편성합니다.
+              그래서 지금은 <b>"이런 조건이면 갈 수 있다"</b>를 알려주시는 단계입니다.
+              <ul>
+                <li>선택하신다고 해서 그 날짜·장소로 확정되는 것이 아닙니다</li>
+                <li>편성이 끝나면 개별로 일정을 안내해 드리고, 그때 참석 여부를 다시 확인합니다</li>
+                <li>안내받으신 일정이 어려우시면 다른 회차로 변경하실 수 있습니다</li>
+              </ul>
+              <p style="margin-top:0.5rem;"><b>가능한 조건을 넉넉히 선택해 주실수록 참석하실 수 있는 자리로 편성해 드리기 쉬워집니다.</b></p>
+            </div>
+
+            <div class="q-block">
+              <p class="q-title"><span class="q-badge">Q22</span>집단상담(자조모임)에 참여하실 수 있는 <b>요일</b>을 모두 선택해 주세요.<span class="req">복수 선택</span></p>
+              <p class="q-help">💬 집단상담은 1회 4시간으로 진행됩니다. 가능한 요일을 모두 선택해 주시면 참석 가능성이 가장 높은 날로 편성합니다.</p>
+              <div class="choice-list cols3 center">
+                <div class="choice"><input type="checkbox" name="q22" id="q22-1" value="월" onchange="checkWeekdayMix()"><label for="q22-1">월요일</label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-2" value="화" onchange="checkWeekdayMix()"><label for="q22-2">화요일</label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-3" value="수" onchange="checkWeekdayMix()"><label for="q22-3">수요일</label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-4" value="목" onchange="checkWeekdayMix()"><label for="q22-4">목요일</label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-5" value="금" onchange="checkWeekdayMix()"><label for="q22-5">금요일</label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-6" value="토" onchange="checkWeekdayMix()"><label for="q22-6"><b>토요일</b></label></div>
+                <div class="choice"><input type="checkbox" name="q22" id="q22-7" value="일" onchange="checkWeekdayMix()"><label for="q22-7"><b>일요일</b></label></div>
+              </div>
+              <p class="error-msg" id="err-q22">가능한 요일을 한 개 이상 선택해 주세요.</p>
+            </div>
+
+            <div class="q-block">
+              <p class="q-title"><span class="q-badge">Q23</span>참여하실 수 있는 <b>시간대</b>를 모두 선택해 주세요.<span class="req">복수 선택</span></p>
+              <p class="q-help">💬 4시간 단위로 진행되므로 시작 시각 기준입니다. 여러 개 선택하실수록 편성이 수월해집니다.</p>
+              <div class="choice-list cols3 center">
+                <div class="choice"><input type="checkbox" name="q23" id="q23-1" value="낮" onchange="checkWeekdayMix()"><label for="q23-1">낮<span class="desc">10:00~14:00</span></label></div>
+                <div class="choice"><input type="checkbox" name="q23" id="q23-2" value="오후" onchange="checkWeekdayMix()"><label for="q23-2">오후<span class="desc">14:00~18:00</span></label></div>
+                <div class="choice"><input type="checkbox" name="q23" id="q23-3" value="저녁밤" onchange="checkWeekdayMix()"><label for="q23-3">저녁·밤<span class="desc">18:00~22:00</span></label></div>
+              </div>
+              <div class="warn-box" id="weekday-warn" style="display:none;">
+                평일 낮에 4시간을 내기 어려우실 수도 있습니다. 가능하시다면 다른 요일이나 시간대도 함께 선택해 주세요.
+              </div>
+              <p class="error-msg" id="err-q23">가능한 시간대를 한 개 이상 선택해 주세요.</p>
+            </div>
+
+            <div class="q-block">
+              <p class="q-title"><span class="q-badge">Q24</span>집단상담(자조모임)은 어떤 방식이 좋으신가요?<span class="req">필수</span></p>
+              <p class="q-help">💬 대면과 비대면 중 어떤 방식으로 열릴지는 아직 정해지지 않았습니다. 신청자 분들의 응답을 모아 결정하며, 두 방식을 함께 운영할 수도 있습니다.</p>
+              <div class="choice-list">
+                <div class="choice"><input type="radio" name="q24" id="q24-1" value="1" onchange="onQ24Change()"><label for="q24-1">대면<span class="desc">직접 만나서 이야기 나누고 싶습니다</span></label></div>
+                <div class="choice"><input type="radio" name="q24" id="q24-2" value="2" onchange="onQ24Change()"><label for="q24-2">비대면(화상)<span class="desc">이동이 어려워 집에서 참여하고 싶습니다</span></label></div>
+                <div class="choice"><input type="radio" name="q24" id="q24-3" value="3" onchange="onQ24Change()"><label for="q24-3">둘 다 좋습니다<span class="desc">편성되는 대로 참여하겠습니다</span></label></div>
+              </div>
+              <p class="error-msg" id="err-q24">선택해 주세요.</p>
+            </div>
+
+            <div class="q-block" id="q25-block" style="display:none;">
+              <p class="q-title"><span class="q-badge">Q25</span>대면으로 진행될 경우 <b>아래 4곳</b>이 후보입니다. 참석하실 수 있는 곳을 모두 선택해 주세요.<span class="req">복수 선택</span></p>
+              <p class="q-help">💬 아래 네 곳은 후보 장소이며, 실제로 어디에서 열릴지는 신청자 분들의 응답을 모은 뒤 정해집니다.</p>
+              <label class="consent-check" style="border-top:none; padding:0 0 0.6rem;">
+                <input type="checkbox" id="q25-all" onchange="toggleAllSites(this)">
+                <span>네 곳 모두 가능합니다</span>
+              </label>
+              <div class="choice-list">
+                <div class="choice"><input type="checkbox" name="q25" id="q25-1" value="서울역" onchange="onSiteChange()"><label for="q25-1">서울역<span class="desc">1·4호선 · 경의중앙선 · 공항철도 · 도심권</span></label></div>
+                <div class="choice"><input type="checkbox" name="q25" id="q25-2" value="마포역" onchange="onSiteChange()"><label for="q25-2">마포역<span class="desc">5호선 · 서북권</span></label></div>
+                <div class="choice"><input type="checkbox" name="q25" id="q25-3" value="낙성대역" onchange="onSiteChange()"><label for="q25-3">낙성대역<span class="desc">2호선 · 서남권</span></label></div>
+                <div class="choice"><input type="checkbox" name="q25" id="q25-4" value="대방역" onchange="onSiteChange()"><label for="q25-4">대방역<span class="desc">1호선 · 신림선 · 서남권</span></label></div>
+              </div>
+              <div class="info-box" id="region-hint" style="margin-top:0.7rem; margin-bottom:0;"></div>
+              <div class="warn-box" id="site-one-warn" style="display:none;">
+                선택하신 곳의 일정이 맞지 않으면 참석이 어려울 수 있습니다. 가능한 곳을 여러 곳 선택하실수록 편성이 쉬워집니다.
+              </div>
+              <p class="error-msg" id="err-q25">참석 가능한 장소를 한 곳 이상 선택해 주세요.</p>
+            </div>
+
+            <div class="q-block">
+              <p class="q-title"><span class="q-badge">Q26</span>집단상담에 참여하시는 <b>4시간 동안</b>, 돌봄을 대신해 주실 분이 계신가요?<span class="req">필수</span></p>
+              <p class="q-help">💬 어떻게 답하셔도 참여에는 영향이 없습니다. 자리를 비우기 어려운 분께는 비대면 참여나 다른 방법을 함께 찾아 안내해 드립니다.</p>
+              <div class="choice-list">
+                <div class="choice"><input type="radio" name="q26" id="q26-1" value="1"><label for="q26-1">있습니다</label></div>
+                <div class="choice"><input type="radio" name="q26" id="q26-2" value="2"><label for="q26-2">조정하면 가능할 것 같습니다</label></div>
+                <div class="choice"><input type="radio" name="q26" id="q26-3" value="3"><label for="q26-3">없습니다 — 자리를 비우기 어렵습니다</label></div>
+              </div>
+              <p class="error-msg" id="err-q26">선택해 주세요.</p>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="backFromParticipation()">이전</button>
+            <button class="btn-primary" onclick="validateParticipation()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 12 · STEP 9 — 상담 신청 이유 및 1:1 조건 ══════════ -->
+    <div class="page" id="page-12">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">상담 신청 이유 및 1:1 상담 조건</p>
+          <p class="section-subtitle">어떤 이야기를 나누고 싶으신지 알려주시면, 그에 맞는 상담사를 배정하고 첫 회기를 준비하는 데 도움이 됩니다.</p>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q27</span>상담을 신청하신 이유는 무엇인가요?<span class="req">최대 3개</span></p>
+            <p class="q-help">💬 꼭 돌봄과 관련된 이유가 아니어도 괜찮습니다. 지금 가장 힘든 것을 선택해 주세요.</p>
+            <p class="scale-group-label">돌봄과 관련된 어려움</p>
+            <div class="choice-list" id="q27-care"></div>
+            <p class="scale-group-label">그 밖의 어려움</p>
+            <div class="choice-list" id="q27-other"></div>
+            <input type="text" class="inline-input" id="q27-etc-text" placeholder="기타 사유를 적어 주세요" style="display:none;">
+            <p class="q-note" id="q27-count">0 / 3개 선택</p>
+            <p class="error-msg" id="err-q27">한 가지 이상 선택해 주세요.</p>
+          </div>
+
+          <div class="q-block" id="q28-block">
+            <p class="q-title"><span class="q-badge">Q28</span>그중 <b>가장 먼저</b> 다루고 싶은 것 하나를 골라 주세요.<span class="req">필수</span></p>
+            <div class="choice-list" id="q28-list"></div>
+            <p class="error-msg" id="err-q28">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q29</span>지금의 어려움이 <b>이중돌봄 상황과 얼마나 관련이 있다고</b> 느끼시나요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q29" id="q29-1" value="1"><label for="q29-1">전적으로 돌봄 때문입니다</label></div>
+              <div class="choice"><input type="radio" name="q29" id="q29-2" value="2"><label for="q29-2">대부분 돌봄 때문입니다</label></div>
+              <div class="choice"><input type="radio" name="q29" id="q29-3" value="3"><label for="q29-3">절반 정도는 돌봄, 절반은 다른 이유입니다</label></div>
+              <div class="choice"><input type="radio" name="q29" id="q29-4" value="4"><label for="q29-4">일부만 돌봄과 관련이 있습니다</label></div>
+              <div class="choice"><input type="radio" name="q29" id="q29-5" value="5"><label for="q29-5">돌봄과는 거의 관련이 없습니다</label></div>
+            </div>
+            <p class="error-msg" id="err-q29">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q30</span>이전에 심리상담을 받아보신 적이 있나요?<span class="req">필수</span></p>
+            <p class="q-help">💬 현재 다른 곳에서 상담을 받고 계셔도 본 사업에 참여하실 수 있습니다.</p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q30" id="q30-1" value="1"><label for="q30-1">없습니다</label></div>
+              <div class="choice"><input type="radio" name="q30" id="q30-2" value="2"><label for="q30-2">있습니다 — 예전에 받았고 지금은 받지 않습니다</label></div>
+              <div class="choice"><input type="radio" name="q30" id="q30-3" value="3"><label for="q30-3">있습니다 — 현재도 받고 있습니다</label></div>
+            </div>
+            <p class="error-msg" id="err-q30">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q31</span><b>1:1 상담</b>은 어떤 방식으로 받고 싶으신가요?<span class="req">필수</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q31" id="q31-1" value="1" onchange="onQ31Change()"><label for="q31-1">대면 상담<span class="desc">상담센터를 방문합니다</span></label></div>
+              <div class="choice"><input type="radio" name="q31" id="q31-2" value="2" onchange="onQ31Change()"><label for="q31-2">화상 상담<span class="desc">집이나 원하는 장소에서 화상으로</span></label></div>
+              <div class="choice"><input type="radio" name="q31" id="q31-3" value="3" onchange="onQ31Change()"><label for="q31-3">전화 상담<span class="desc">통화로 진행합니다</span></label></div>
+              <div class="choice"><input type="radio" name="q31" id="q31-4" value="4" onchange="onQ31Change()"><label for="q31-4">상관없습니다</label></div>
+            </div>
+            <p class="error-msg" id="err-q31">선택해 주세요.</p>
+          </div>
+
+          <div class="q-block" id="q32-block" style="display:none;">
+            <p class="q-title"><span class="q-badge">Q32</span>방문하기 편한 지역을 선택해 주세요.<span class="req">필수</span></p>
+            <p class="q-help">💬 선택하신 지역의 협약 상담센터 목록을 안내해 드리며, 센터는 직접 선택하실 수 있습니다.</p>
+            <div class="choice-list">
+              <div class="choice"><input type="radio" name="q32" id="q32-1" value="도심권"><label for="q32-1">도심권<span class="desc">종로·중구·용산</span></label></div>
+              <div class="choice"><input type="radio" name="q32" id="q32-2" value="동북권"><label for="q32-2">동북권<span class="desc">성동·광진·동대문·중랑·성북·강북·도봉·노원</span></label></div>
+              <div class="choice"><input type="radio" name="q32" id="q32-3" value="서북권"><label for="q32-3">서북권<span class="desc">은평·서대문·마포</span></label></div>
+              <div class="choice"><input type="radio" name="q32" id="q32-4" value="서남권"><label for="q32-4">서남권<span class="desc">양천·강서·구로·금천·영등포·동작·관악</span></label></div>
+              <div class="choice"><input type="radio" name="q32" id="q32-5" value="동남권"><label for="q32-5">동남권<span class="desc">서초·강남·송파·강동</span></label></div>
+            </div>
+            <p class="error-msg" id="err-q32">선택해 주세요.</p>
+          </div>
+
+          <!-- Q33(상담사 성별 선호)는 신청서에서 받지 않는다.
+               신청 단계에서 성별을 지정받으면 배정 가능한 상담사가 절반으로 줄어 예약 대기가 길어지므로,
+               실제 배정 가능한 상담사 목록을 보여주는 예약 화면에서 선택하도록 한다.
+               문항 번호는 개발 중 혼선을 줄이기 위해 Q34 이후를 그대로 둔다. -->
+
+          <div class="q-block">
+            <p class="q-title"><span class="q-badge">Q34</span><b>1:1 상담</b>이 가능한 시간대를 모두 선택해 주세요.<span class="req">복수 선택</span></p>
+            <div class="choice-list">
+              <div class="choice"><input type="checkbox" name="q34" id="q34-1" value="평일오전"><label for="q34-1">평일 오전 (09~12시)</label></div>
+              <div class="choice"><input type="checkbox" name="q34" id="q34-2" value="평일오후"><label for="q34-2">평일 오후 (12~18시)</label></div>
+              <div class="choice"><input type="checkbox" name="q34" id="q34-3" value="평일저녁"><label for="q34-3">평일 저녁 (18~21시)</label></div>
+              <div class="choice"><input type="checkbox" name="q34" id="q34-4" value="토요일"><label for="q34-4">토요일</label></div>
+              <div class="choice"><input type="checkbox" name="q34" id="q34-5" value="일요일"><label for="q34-5">일요일</label></div>
+            </div>
+            <p class="error-msg" id="err-q34">가능한 시간대를 한 개 이상 선택해 주세요.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="q35-text">Q35. 상담에서 나누고 싶은 이야기를 조금 더 적어 주세요. <span class="opt">선택</span></label>
+            <p class="hint">앞에서 고르신 것 외에 더 하고 싶은 말씀이 있다면 편하게 적어 주세요. 담당 상담사가 미리 읽고 준비합니다. 몇 줄만 적으셔도 좋습니다.</p>
+            <textarea id="q35-text" placeholder="자유롭게 적어 주세요"></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(11)">이전</button>
+            <button class="btn-primary" onclick="validateReason()">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 13 · STEP 10 — 유의사항 확인 및 제출 ══════════ -->
+    <div class="page" id="page-13">
+      <div class="card">
+        <div class="card-body">
+          <p class="section-title">유의사항 확인 및 제출</p>
+          <p class="section-subtitle">마지막 단계입니다. 아래 내용을 확인하고 신청을 완료해 주세요.</p>
+
+          <div class="consent-item">
+            <p class="consent-title">상담 이용 안내 <span class="req">필수</span></p>
+            <p class="consent-body">
+              · 1:1 상담은 <b>1회 50분</b>으로 운영됩니다.<br>
+              · 예약 변경은 <b>횟수 제한 없이 자유롭게</b> 가능하며 회기가 차감되지 않습니다.<br>
+              · 다만 <b>1:1 상담</b>의 <b>당일 취소 및 무단 불참(노쇼)</b>의 경우에는 <b>1회가 차감</b>됩니다. 상담사 시간이 이미 확보된 뒤 발생하는 손실이기 때문입니다.<br>
+              · <b>집단상담(자조모임)</b>은 <b>1회 4시간</b>으로 진행됩니다. 신청 후 참여하지 못하셔도 불이익은 없으며, 다른 회차로 다시 안내해 드립니다.<br>
+              · 집단상담의 <b>일정·진행 방식·장소는 신청 시점에 확정되지 않습니다.</b> 신청자 응답을 취합한 뒤 편성하여 개별 안내드리며, 안내받으신 일정이 어려우시면 다른 회차로 변경하실 수 있습니다.<br>
+              · 배정 회기가 모두 소진된 경우 <b>대기자로 등록</b>되며, 자리가 생기는 대로 순차적으로 안내드립니다.
+            </p>
+            <label class="consent-check">
+              <input type="checkbox" class="final-agree" id="agree-notice">
+              <span>위 내용을 확인하였습니다</span>
+            </label>
+          </div>
+
+          <div class="consent-item">
+            <p class="consent-title">사후검사 및 만족도 조사 참여 안내 <span class="req">필수</span></p>
+            <p class="consent-body">
+              마지막 상담 회기에서 사후검사와 만족도 조사를 진행합니다. 사전·사후 비교 리포트를 받아보실 수 있으며,
+              응답 결과는 개인을 식별할 수 없는 통계 형태로만 활용됩니다.
+            </p>
+            <label class="consent-check">
+              <input type="checkbox" class="final-agree" id="agree-post">
+              <span>위 내용을 확인하였습니다</span>
+            </label>
+          </div>
+
+          <p class="error-msg" id="err-final">두 항목을 모두 확인해 주세요.</p>
+
+          <p class="section-title" style="margin-top:1.75rem; font-size:1rem;">신청 내용 최종 확인</p>
+          <div class="summary-list" id="summary-list"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="goPage(12)">이전</button>
+            <button class="btn-primary" onclick="submitApplication()">신청 완료하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAGE 14 — 신청 완료 + 결과 리포트 ══════════ -->
+    <div class="page" id="page-14">
+      <div class="card">
+        <div class="result-header">
+          <p class="result-name" id="result-name-display"></p>
+          <h1>신청이 접수되었습니다</h1>
+        </div>
+
+        <div class="card-body" style="padding-bottom:0;">
+          <div class="info-box">
+            신청해 주셔서 감사합니다.<br>
+            본 사업은 <b>모집 기간 동안 신청을 받은 뒤</b> 순차적으로 배정해 드립니다.
+            <b>모집이 마감되면 개별 문자로 안내</b>드리겠습니다. 상담 일정은 안내 문자의 링크에서 직접 선택하실 수 있습니다.<br>
+            신청 순서대로 마감되는 방식이 아니니, 안내를 기다려 주시면 됩니다.
+          </div>
+
+          <p class="section-title" style="margin-top:1.5rem; font-size:1rem;">내 마음 상태 결과 리포트</p>
+          <p class="section-subtitle">이 결과는 진단이 아니라 지금의 마음 상태를 확인하는 참고 자료입니다. 상담 첫 회기에서 상담사와 함께 자세히 살펴보게 됩니다.</p>
+        </div>
+
+        <div class="result-cards" id="result-cards-wrap"></div>
+
+        <p class="result-notice">※ 검사 결과는 별도로 개별 발송되지 않습니다. 현재 화면에 표시된 결과를 확인해 주세요.</p>
+
+        <div class="card-body" style="padding-top:0;">
+          <div class="resource-box">
+            <b>언제든 이야기 나눌 수 있는 곳</b><br>
+            · 자살예방상담전화 <b>109</b> (24시간)<br>
+            · 정신건강상담전화 <b>1577-0199</b> (24시간)
+          </div>
+        </div>
+
+        <div class="result-footer">
+          <div class="contact-chip">
+            📞 문의 1877-0410 (평일 09:00~18:00)
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <!-- Sending overlay -->
+  <div class="sending-overlay" id="sending-overlay">
+    <div class="sending-box">
+      <div class="spinner"></div>
+      <p id="sending-text">신청을 접수하는 중입니다</p>
+    </div>
+  </div>
+
+  <!-- 임시 저장 복귀 안내 모달 -->
+  <div class="modal-overlay" id="draft-modal">
+    <div class="modal-box">
+      <h3>작성하시던 신청서가 있습니다.</h3>
+      <p id="draft-saved-at"></p>
+      <p>이어서 작성하시면 <b>마지막으로 입력하신 내용부터</b> 계속하실 수 있습니다.
+        본인이 작성한 신청서가 아니라면 <b>[처음부터]</b>를 선택해 주세요. 저장된 내용이 삭제됩니다.</p>
+      <div class="modal-btns">
+        <button class="btn-secondary" onclick="discardDraft()">처음부터</button>
+        <button class="btn-primary" onclick="resumeDraft()">이어서 작성하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 녹음 미동의 안내 모달 (Q21-4) — 강제 이동시키지 않고 선택하게 한다 -->
+  <div class="modal-overlay" id="rec-modal">
+    <div class="modal-box">
+      <h3>녹음에 동의하지 않으시면<br>집단상담에는 참여하실 수 없습니다.</h3>
+      <p>집단상담에서 나눠 주신 이야기는 서울시 이중돌봄 정책을 만드는 근거 자료가 되기 때문에, 녹음이 꼭 필요한 절차입니다.</p>
+      <p>대신 <b>1:1 상담 5회(유형 1)</b>로 참여하실 수 있습니다. 1:1 상담은 녹음하지 않으며, 상담 횟수도 5회로 더 많습니다.</p>
+      <div class="modal-btns">
+        <button class="btn-secondary" onclick="closeRecModal()">돌아가기</button>
+        <button class="btn-primary" onclick="switchToType1(true)">유형 1로 변경하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════
+    //  서울시민 마음잡고 프로젝트 — 참여 신청서
+    //  STEP 1~10 (STEP 7 = 사전 심리검사 NDS/NAS/NSS)
+    // ═══════════════════════════════════════════
+
+    // ===== DATA: 심리검사 문항 =====
+    const depressionItems = [
+      '하루 종일 우울하다', '평소에는 즐겁던 일이 재미없어졌다', '죽고 싶다',
+      '마음속에서 뭔가 치밀어 오르는 것 같다', '사소한 일도 결정하기가 어렵다', '자신감을 잃었다',
+      '앞으로도 좋은 일이 생길 것 같지 않다', '안절부절못하거나 느려졌다는 말을 듣는다',
+      '잠을 지나치게 많이 자거나 적게 잔다', '식욕이 지나치게 늘거나 줄었다',
+      '피곤하고 기진맥진한 상태이다', '하루를 생활하기가 버겁다'
+    ];
+
+    const anxietyItems = [
+      '이유 없이 불안하다', '안절부절못한다', '불안이나 걱정으로 일상생활이 안 된다',
+      '나쁜 일이 일어날까 두렵다', '걱정이 많다는 것을 알면서도 걱정을 멈출 수 없다',
+      '집중하는 것이 힘들다', '금방 피로해진다', '신경이 날카롭다', '근육이 긴장된다',
+      '잠들기 어렵거나 자는 도중 자꾸 깬다', '두근거림, 떨림, 입마름 등의 증상이 있다'
+    ];
+
+    const stressItems = [
+      '스트레스를 많이 받는다', '변화에 적응하기 어렵다', '문제가 생기면 직접 처리할 자신이 없다',
+      '머리가 아프다', '어지럽다', '소화가 안 된다', '가슴이 답답하다', '불안하고 초조하다',
+      '쉽게 화가 난다', '쉽게 짜증이 난다', '뭘 자꾸 먹게 된다'
+    ];
+
+    // STEP 6 — 돌봄 부담·소진 20문항 (5점 척도, 영역 라벨 포함)
+    const burdenItems = [
+      { g: '신체적 부담', t: '돌봄 때문에 잠이 부족하거나 제대로 쉬지 못한다' },
+      { t: '돌봄으로 몸이 아프거나 체력이 떨어졌다고 느낀다' },
+      { t: '내 건강을 챙길 시간이 없어 진료나 검진을 미룬 적이 있다' },
+      { g: '정서적 부담', t: '돌봄 대상자에게 화가 났다가 곧 미안해지는 일이 반복된다' },
+      { t: '이 돌봄이 언제 끝날지 알 수 없다는 생각에 막막하다' },
+      { t: '내가 힘들다고 말하는 것 자체에 죄책감을 느낀다' },
+      { g: '경제적 부담', t: '돌봄에 드는 비용 때문에 생활이나 노후 준비에 부담을 느낀다' },
+      { t: '돌봄 때문에 일을 줄이거나 그만두는 것을 고민한 적이 있다' },
+      { g: '서비스 관리 부담', t: '어떤 제도나 서비스를 이용할 수 있는지 알아보는 일이 부담스럽다' },
+      { t: '여러 기관과 서비스의 일정·절차를 챙기는 일이 벅차다' },
+      { g: '소진', t: '돌봄을 앞으로도 계속할 수 있을지 자신이 없다' },
+      { t: '하루를 마치면 아무것도 하고 싶지 않을 만큼 지친다' },
+      { g: '이중돌봄 고유 부담', t: '두 사람의 돌봄이 동시에 필요할 때 누구를 먼저 챙길지 몰라 곤란하다' },
+      { t: '한쪽을 챙기면 다른 쪽에 소홀해지는 것 같아 마음이 불편하다' },
+      { t: '갑작스러운 상황이 생기면 하루 일정이 통째로 무너진다' },
+      { g: '사회적 고립', t: '내 상황을 이해해 주는 사람이 주변에 거의 없다' },
+      { t: '돌봄 때문에 사람들과의 만남이나 연락이 줄었다' },
+      { g: '가족 내 돌봄 분담', t: '가족 사이에 돌봄을 나누는 문제로 의견이 부딪힌다' },
+      { t: '돌봄 부담이 나에게 지나치게 쏠려 있다고 느낀다' },
+      { g: '일·생활 균형', t: '나를 위해 쓸 수 있는 시간이 거의 없다' }
+    ];
+
+    // ===== DATA: 선택지 =====
+    const CARE_OPTIONS = [
+      {
+        code: 'A', key: 'MINOR', label: '미성년 가족', short: '미성년 가족',
+        desc: '만 18세 미만 — 영유아, 초등학생, 청소년 자녀나 동생 등',
+        ex: ['초등학생 자녀의 등하교·학습·생활을 챙기고 있다', '어린 동생을 부모 대신 돌보고 있다', '손자녀를 주로 맡아 키우고 있다']
+      },
+      {
+        code: 'B', key: 'DISABLED', label: '장애 또는 질환으로 돌봄이 필요한 가족', short: '장애·질환이 있는 가족',
+        desc: '만 19~64세 성인 중 장애·만성질환·중증질환 등으로 돌봄이 필요한 경우',
+        ex: ['발달장애가 있는 성인 자녀를 돌보고 있다', '뇌졸중 후유증이 있는 배우자를 간병하고 있다', '만성질환으로 투병 중인 형제를 챙기고 있다']
+      },
+      {
+        code: 'C', key: 'ELDERLY', label: '고령으로 돌봄이 필요한 가족', short: '고령 가족',
+        desc: '만 65세 이상 — 거동·건강·인지 문제 등으로 돌봄이 필요한 경우',
+        ex: ['거동이 불편한 만 80세 어머니를 돌보고 있다', '치매가 있는 아버지의 일상과 병원을 관리하고 있다', '따로 사시는 부모님의 생활비와 병원 동행을 맡고 있다']
+      },
+      {
+        code: 'D', key: 'OTHER', label: '그 외 가족', short: '그 외 가족',
+        desc: '위 세 가지에 해당하지 않지만 돌봄이 필요한 가족 (배우자, 형제·자매, 조카 등)',
+        ex: ['실직·정신적 어려움으로 회복 중인 형제를 돌보고 있다', '부모를 대신해 조카를 돌보고 있다', '위 세 가지에 딱 맞지 않는 돌봄 상황이다']
+      }
+    ];
+
+    const DISTRICTS = ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구',
+      '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구',
+      '용산구', '은평구', '종로구', '중구', '중랑구', '서울 외 거주(서울 생활권)'];
+
+    const REGION_MAP = {
+      '도심권': { d: ['종로구', '중구', '용산구'], site: '서울역' },
+      '서북권': { d: ['은평구', '서대문구', '마포구'], site: '마포역 · 서울역' },
+      '서남권': { d: ['양천구', '강서구', '구로구', '금천구', '영등포구', '동작구', '관악구'], site: '대방역 · 낙성대역' },
+      '동북권': { d: ['성동구', '광진구', '동대문구', '중랑구', '성북구', '강북구', '도봉구', '노원구'], site: '서울역' },
+      '동남권': { d: ['서초구', '강남구', '송파구', '강동구'], site: '서울역 · 낙성대역' }
+    };
+
+    // Q21-1 · 집단상담을 선택하지 않은 사유 (참여 장벽 분석 자료)
+    const Q21_DECLINE = [
+      { v: '1', t: '낯선 사람 앞에서 <b>내 이야기를 하는 것이 부담</b>스럽다' },
+      { v: '2', t: '<b>4시간을 한 번에 비우기 어렵다</b> — 그 시간 동안 돌봄을 맡길 사람이 없다' },
+      { v: '3', t: '<b>이동이 부담</b>된다 (거리·시간)' },
+      { v: '4', t: '<b>1:1이 더 도움</b>될 것 같다 — 내 이야기를 깊이 다루고 싶다' },
+      { v: '5', t: '다른 분들의 <b>힘든 이야기를 듣는 것이 버거울</b> 것 같다' },
+      { v: '6', t: '<b>아는 사람을 마주칠까 봐</b> 걱정된다' },
+      { v: '7', t: '<b>집단상담이 어떤 것인지 잘 몰라서</b>' },
+      { v: '8', t: '대화가 <b>녹음된다는 점</b>이 부담스럽다' },
+      { v: '9', t: '기타' }
+    ];
+
+    // Q21-2 · 집단상담을 선택한 사유 (집단 참여자의 기대 유형)
+    const Q21_CHOOSE = [
+      { v: '1', t: '<b>같은 상황에 있는 사람들</b>을 만나보고 싶다' },
+      { v: '2', t: '<b>나만 이런 게 아니라는 것</b>을 확인하고 싶다' },
+      { v: '3', t: '다른 분들은 <b>어떻게 견디고 계신지</b> 듣고 싶다' },
+      { v: '4', t: '혼자 삼켜온 이야기를 <b>털어놓고 위로받고</b> 싶다' },
+      { v: '5', t: '돌봄에 도움이 되는 <b>정보를 얻고</b> 싶다' },
+      { v: '6', t: '이후에도 <b>계속 이야기 나눌 사람</b>을 만나고 싶다' },
+      { v: '7', t: '<b>1:1 상담만으로는 부족</b>할 것 같다' },
+      { v: '8', t: '기타' }
+    ];
+
+    const Q27_CARE = [
+      { v: '1', t: '돌봄으로 인한 <b>소진과 지침</b>' },
+      { v: '2', t: '돌봄 대상자와의 <b>관계에서 오는 어려움</b> (감정 조절, 양가감정 등)' },
+      { v: '3', t: '<b>가족 간 돌봄 분담</b>을 둘러싼 갈등' },
+      { v: '4', t: '<b>일(학업)과 돌봄을 병행</b>하는 어려움' },
+      { v: '5', t: '돌봄이 끝난 <b>이후의 삶과 미래에 대한 불안</b>' }
+    ];
+
+    const Q27_OTHER = [
+      { v: '6', t: '우울·불안 등 <b>마음 상태 자체</b>가 힘듦' },
+      { v: '7', t: '<b>부부·연인 관계</b> 문제' },
+      { v: '8', t: '<b>자녀 양육·훈육</b> 문제 (돌봄 부담과는 별개의 어려움)' },
+      { v: '9', t: '<b>직장·진로</b> 문제' },
+      { v: '10', t: '<b>대인관계</b> 문제 (친구, 직장 동료 등)' },
+      { v: '11', t: '<b>본인의 건강</b> 문제' },
+      { v: '12', t: '<b>경제적 어려움</b>' },
+      { v: '13', t: '<b>상실·사별</b> 경험' },
+      { v: '14', t: '기타' }
+    ];
+
+    // ===== STATE =====
+    let answers = { depression: {}, anxiety: {}, stress: {}, burden: {} };
+    let form = {};
+    let safetyShown = false;
+
+    // 페이지 → STEP 번호 (진행률 표시용)
+    const PAGE_STEP = { 0: 1, 1: 2, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 7, 9: 7, 10: 7, 11: 8, 12: 9, 13: 10, 14: 10 };
+
+    // ===== 공통 유틸 =====
+    function $(id) { return document.getElementById(id); }
+    function val(name) {
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? el.value : '';
+    }
+    function vals(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+    }
+    function showErr(id, show) {
+      const el = $(id);
+      if (el) el.classList.toggle('show', show);
+    }
+    function clearErrs(pageId) {
+      $(pageId).querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+    }
+    function focusErr(id) {
+      const el = $(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function toggleExample(id) {
+      $(id).classList.toggle('show');
+    }
+
+    // ===== 척도 문항 렌더링 =====
+    function renderQuestions(containerId, items, scaleName, steps) {
+      steps = steps || 4;             // 4 = 0~3점(NDS/NAS/NSS), 5 = 1~5점(돌봄 부담)
+      const container = $(containerId);
+      container.innerHTML = '';
+      items.forEach((item, i) => {
+        const text = typeof item === 'string' ? item : item.t;
+        if (typeof item === 'object' && item.g) {
+          const lab = document.createElement('p');
+          lab.className = 'scale-group-label';
+          lab.textContent = item.g;
+          container.appendChild(lab);
+        }
+        const row = document.createElement('div');
+        row.className = 'question-row';
+        let radios = '';
+        const from = steps === 5 ? 1 : 0;
+        const to = steps === 5 ? 5 : 3;
+        for (let v = from; v <= to; v++) {
+          const checked = answers[scaleName][i] === v ? 'checked' : '';
+          radios += `<div class="radio-cell"><input type="radio" name="${scaleName}_${i}" value="${v}" ${checked} onchange="setAnswer('${scaleName}', ${i}, ${v})"></div>`;
+        }
+        row.innerHTML = `<div class="question-text"><span class="q-num">${i + 1}</span>${text}</div>${radios}`;
+        container.appendChild(row);
+      });
+      equalizeRowHeights(container);
+    }
+
+    // 문항 길이가 제각각이라 줄바꿈된 행만 커지는 것을 막기 위해, 가장 높은 행 기준으로 전체 행 높이를 맞춘다
+    function equalizeRowHeights(container) {
+      const rows = container.querySelectorAll('.question-row');
+      if (!rows.length) return;
+      rows.forEach(r => { r.style.minHeight = ''; });
+      const max = Math.max(...Array.from(rows).map(r => r.getBoundingClientRect().height));
+      rows.forEach(r => { r.style.minHeight = max + 'px'; });
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        ['burden-questions', 'depression-questions', 'anxiety-questions', 'stress-questions'].forEach(id => {
+          const el = $(id);
+          if (el && el.children.length) equalizeRowHeights(el);
+        });
+      }, 150);
+    });
+
+    function setAnswer(scale, qIdx, v) {
+      answers[scale][qIdx] = v;
+      const first = document.querySelector(`[name="${scale}_${qIdx}"]`);
+      if (first) {
+        const row = first.closest('.question-row');
+        if (row) row.classList.remove('unanswered');
+      }
+    }
+
+    // ===== NAVIGATION =====
+    let maxReached = 0;
+
+    function tryGoPage(n) {
+      if (n <= maxReached) goPage(n);
+    }
+
+    let currentPage = 0;
+
+    function goPage(n) {
+      currentPage = n;
+      maxReached = Math.max(maxReached, n);
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      $('page-' + n).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // 스텝 버튼: data-page 기준으로 활성/잠금 처리 (조건부 페이지는 버튼 없음)
+      let activeBtn = null;
+      document.querySelectorAll('.step-btn').forEach(btn => {
+        const p = parseInt(btn.dataset.page, 10);
+        btn.classList.toggle('locked', p > maxReached);
+        btn.classList.remove('active');
+        if (p <= n) activeBtn = btn;
+      });
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      const step = PAGE_STEP[n] || 1;
+      $('progress-fill').style.width = (step * 10) + '%';
+      $('progress-label').textContent = 'STEP ' + step + ' / 10';
+
+      if (n === 12) ensureQ27();
+      if (n === 6) renderQuestions('burden-questions', burdenItems, 'burden', 5);
+      if (n === 7) renderQuestions('depression-questions', depressionItems, 'depression');
+      if (n === 8) renderQuestions('anxiety-questions', anxietyItems, 'anxiety');
+      if (n === 9) renderQuestions('stress-questions', stressItems, 'stress');
+      if (n === 13) buildSummary();
+      saveDraft();
+    }
+
+    // ═══════════ 임시 저장 (중도 이탈 후 복귀) ═══════════
+    // 저장 위치는 이 브라우저의 localStorage 한 곳뿐이다. 다른 사이트에서 읽을 수 없고
+    // 서버로 전송되지도 않으며, 남는 위험은 '같은 기기를 다음에 쓰는 사람'뿐이다.
+    // 그래서 ① 신청 완료 즉시 삭제 ② 24시간 뒤 자동 만료 ③ STEP 1에 고지와 수동 삭제 버튼
+    // 세 가지로 관리하고, 항목은 가리지 않고 모두 저장한다.
+    const DRAFT_KEY = 'swf_apply_draft_v1';
+    const DRAFT_TTL = 24 * 60 * 60 * 1000;
+    const DRAFT_TEXT_IDS = ['inp-name', 'inp-phone', 'inp-email', 'inp-birth', 'inp-district',
+      'q21a-etc-text', 'q21b-etc-text', 'q27-etc-text', 'q35-text'];
+
+    function collectDraft() {
+      const checks = {};
+      document.querySelectorAll('.page-wrap input[type="radio"], .page-wrap input[type="checkbox"]')
+        .forEach(el => { if (el.checked && el.id) checks[el.id] = true; });
+      const texts = {};
+      DRAFT_TEXT_IDS.forEach(id => { const el = $(id); if (el && el.value) texts[id] = el.value; });
+      return {
+        v: 1, savedAt: Date.now(), page: currentPage, maxReached,
+        form, answers, checks, texts, safetyShown
+      };
+    }
+
+    // 시크릿 모드 등 저장이 막힌 환경에서도 작성은 계속되어야 하므로 조용히 넘어간다
+    function saveDraft() {
+      if (currentPage >= 14) return;                 // 제출 완료 후에는 저장하지 않음
+      try { localStorage.setItem(DRAFT_KEY, JSON.stringify(collectDraft())); } catch (e) { }
+    }
+
+    function loadDraft() {
+      try {
+        const raw = localStorage.getItem(DRAFT_KEY);
+        if (!raw) return null;
+        const d = JSON.parse(raw);
+        if (!d || d.v !== 1 || !d.savedAt || Date.now() - d.savedAt > DRAFT_TTL) {
+          localStorage.removeItem(DRAFT_KEY);
+          return null;
+        }
+        return d;
+      } catch (e) { return null; }
+    }
+
+    let draftTimer;
+    function queueSaveDraft() { clearTimeout(draftTimer); draftTimer = setTimeout(saveDraft, 400); }
+
+    function applyChecks(checks) {
+      Object.keys(checks || {}).forEach(id => { const el = $(id); if (el) el.checked = true; });
+    }
+
+    function resumeDraft() {
+      const d = loadDraft();
+      $('draft-modal').classList.remove('show');
+      if (!d) return;
+
+      Object.keys(d.form || {}).forEach(k => { form[k] = d.form[k]; });
+      if (d.answers) answers = d.answers;
+      safetyShown = !!d.safetyShown;
+      Object.keys(d.texts || {}).forEach(id => { const el = $(id); if (el) el.value = d.texts[id]; });
+      applyChecks(d.checks);
+
+      // 동적으로 생성되는 선택지는 앞 문항을 복원한 뒤 다시 그리고, 그 위에 응답을 얹는다
+      syncAgreeAll();
+      if (val('q13')) { onQ13Change(); applyChecks(d.checks); }
+      onQ15Change(false);
+      if (val('q21')) {
+        onQ21Change();
+        applyChecks(d.checks);
+        onReasonChange('q21a', '9', 'q21a-count', 'q21a-etc-text');
+        onReasonChange('q21b', '8', 'q21b-count', 'q21b-etc-text');
+        onRecConsentChange();
+        applyChecks(d.checks);
+        if (val('q24')) { onQ24Change(); applyChecks(d.checks); onSiteChange(); }
+        checkWeekdayMix();
+      }
+      if (form.q12) {
+        // ensureQ27은 form.q12 기준으로 렌더를 건너뛰므로, 복원 시에는 강제로 다시 그린다
+        q27RenderedFor = null;
+        ensureQ27();
+        applyChecks(d.checks);
+        onQ27Change();
+        applyChecks(d.checks);
+      }
+      if (val('q31')) onQ31Change();
+
+      maxReached = Math.min(d.maxReached || 0, 13);
+      goPage(Math.min(d.page || 0, 13));
+    }
+
+    function discardDraft(fromNotice) {
+      try { localStorage.removeItem(DRAFT_KEY); } catch (e) { }
+      $('draft-modal').classList.remove('show');
+      if (fromNotice) alert('작성 중이던 내용을 삭제했습니다.');
+    }
+
+    function initDraft() {
+      const d = loadDraft();
+      if (!d) return;
+      const t = new Date(d.savedAt);
+      $('draft-saved-at').textContent =
+        `마지막 저장: ${t.getFullYear()}. ${t.getMonth() + 1}. ${t.getDate()}. ` +
+        `${String(t.getHours()).padStart(2, '0')}:${String(t.getMinutes()).padStart(2, '0')}`;
+      $('draft-modal').classList.add('show');
+    }
+
+    // ═══════════ STEP 1 · 동의 ═══════════
+    function toggleAgreeAll(el) {
+      document.querySelectorAll('.agree-item').forEach(c => { c.checked = el.checked; });
+      showErr('err-agree', false);
+    }
+
+    function syncAgreeAll() {
+      const all = Array.from(document.querySelectorAll('.agree-item'));
+      $('agree-all').checked = all.every(c => c.checked);
+      if (all.every(c => c.checked)) showErr('err-agree', false);
+    }
+
+    function validateConsent() {
+      const all = Array.from(document.querySelectorAll('.agree-item'));
+      if (!all.every(c => c.checked)) {
+        showErr('err-agree', true);
+        focusErr('err-agree');
+        return;
+      }
+      showErr('err-agree', false);
+      goPage(1);
+    }
+
+    // ═══════════ STEP 2 · 참여 자격 확인 ═══════════
+    function validateEligibility() {
+      clearErrs('page-1');
+      let ok = true, firstBad = null;
+      ['q1', 'q2', 'q3', 'q4', 'q5'].forEach(q => {
+        if (!val(q)) {
+          showErr('err-' + q, true);
+          ok = false;
+          if (!firstBad) firstBad = 'err-' + q;
+        }
+      });
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.q1 = val('q1'); form.q2 = val('q2'); form.q3 = val('q3');
+      form.q4 = val('q4'); form.q5 = val('q5');
+
+      // 자동 판별: Q1=② 또는 Q2=② 또는 Q3=① 또는 Q4=③ 또는 Q5=① → 부적격
+      const ineligible = form.q1 === '2' || form.q2 === '2' || form.q3 === '1' || form.q4 === '3' || form.q5 === '1';
+      form.eligible = ineligible ? 'N' : 'Y';
+      goPage(ineligible ? 2 : 3);
+    }
+
+    // ═══════════ STEP 3 · 기본 정보 ═══════════
+    function formatPhone(el) {
+      let d = el.value.replace(/[^0-9]/g, '').slice(0, 11);
+      if (d.length > 7) el.value = d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
+      else if (d.length > 3) el.value = d.slice(0, 3) + '-' + d.slice(3);
+      else el.value = d;
+      $('err-phone').classList.remove('show');
+      el.classList.remove('error');
+    }
+
+    function initSelects() {
+      const birth = $('inp-birth');
+      for (let y = 2007; y >= 1961; y--) {
+        birth.insertAdjacentHTML('beforeend', `<option value="${y}">${y}년</option>`);
+      }
+      const dist = $('inp-district');
+      DISTRICTS.forEach(d => dist.insertAdjacentHTML('beforeend', `<option value="${d}">${d}</option>`));
+    }
+
+    function validateBasic() {
+      clearErrs('page-3');
+      let ok = true, firstBad = null;
+      const mark = (errId, inpId, bad) => {
+        showErr(errId, bad);
+        if (inpId && $(inpId)) $(inpId).classList.toggle('error', bad);
+        if (bad) { ok = false; if (!firstBad) firstBad = errId; }
+      };
+
+      const name = $('inp-name').value.trim();
+      const phone = $('inp-phone').value.replace(/[^0-9]/g, '');
+      const email = $('inp-email').value.trim();
+
+      mark('err-name', 'inp-name', !name);
+      mark('err-phone', 'inp-phone', !/^01[0-9]{8,9}$/.test(phone));
+      mark('err-email', 'inp-email', !!email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+      mark('err-gender', null, !val('gender'));
+      mark('err-birth', 'inp-birth', !$('inp-birth').value);
+      mark('err-district', 'inp-district', !$('inp-district').value);
+      mark('err-q12', null, !val('q12'));
+
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.name = name;
+      form.phone = phone;
+      form.email = email;
+      form.gender = val('gender');
+      form.birth = $('inp-birth').value;
+      form.district = $('inp-district').value;
+      form.q12 = val('q12');
+      goPage(4);
+    }
+
+    // ═══════════ STEP 4 · 이중돌봄 유형 ═══════════
+    function renderQ13() {
+      const wrap = $('q13-list');
+      wrap.innerHTML = '';
+      CARE_OPTIONS.forEach((o, i) => {
+        wrap.insertAdjacentHTML('beforeend', `
+          <div>
+            <div class="choice">
+              <input type="radio" name="q13" id="q13-${i}" value="${o.key}" onchange="onQ13Change()">
+              <label for="q13-${i}">${o.label}<span class="desc">${o.desc}</span></label>
+            </div>
+            <button class="example-toggle" onclick="toggleExample('q13-ex-${i}')">예시 보기</button>
+            <div class="example-body" id="q13-ex-${i}"><p>· ${o.ex.join('<br>· ')}</p></div>
+          </div>`);
+      });
+    }
+
+    function onQ13Change() {
+      showErr('err-q13', false);
+      const picked = val('q13');
+      const cur = CARE_OPTIONS.find(o => o.key === picked);
+
+      // Q13을 바꾸면 Q14·Q15 응답은 반드시 초기화
+      $('q14-label').textContent = `${cur.short} 외에 추가로 돌보고 계신 가족은 누구인가요?`;
+      $('q14-hint').textContent = '1순위로 선택하신 대상은 선택지에서 제외됩니다.';
+
+      const wrap = $('q14-list');
+      wrap.innerHTML = '';
+      CARE_OPTIONS.filter(o => o.key !== picked).forEach((o, i) => {
+        wrap.insertAdjacentHTML('beforeend', `
+          <div class="choice">
+            <input type="radio" name="q14" id="q14-${i}" value="${o.key}" onchange="showErrQ14()">
+            <label for="q14-${i}">${o.short}<span class="desc">${o.desc}</span></label>
+          </div>`);
+      });
+
+      renderQ15();
+      showErr('err-q14', false);
+    }
+
+    function showErrQ14() { showErr('err-q14', false); }
+
+    function renderQ15() {
+      const wrap = $('q15-list');
+      wrap.innerHTML = '';
+      CARE_OPTIONS.forEach((o, i) => {
+        wrap.insertAdjacentHTML('beforeend', `
+          <div class="choice">
+            <input type="checkbox" name="q15" id="q15-${i}" value="${o.key}" onchange="onQ15Change(false)">
+            <label for="q15-${i}">${o.short}</label>
+          </div>`);
+      });
+      wrap.insertAdjacentHTML('beforeend', `
+        <div class="choice">
+          <input type="checkbox" name="q15none" id="q15-none" value="NONE" onchange="onQ15Change(true)">
+          <label for="q15-none">없음 — 두 분만 돌보고 있습니다</label>
+        </div>`);
+    }
+
+    // ⑤ '없음'과 ①~④는 동시 선택 불가
+    function onQ15Change(fromNone) {
+      const none = $('q15-none');
+      const others = Array.from(document.querySelectorAll('input[name="q15"]'));
+      if (fromNone && none.checked) others.forEach(c => { c.checked = false; });
+      if (!fromNone && others.some(c => c.checked)) none.checked = false;
+    }
+
+    function validateCareType() {
+      clearErrs('page-4');
+      if (!val('q13')) { showErr('err-q13', true); focusErr('err-q13'); return; }
+      if (!val('q14')) { showErr('err-q14', true); focusErr('err-q14'); return; }
+
+      form.q13 = val('q13');
+      form.q14 = val('q14');
+      form.q15 = $('q15-none').checked ? ['NONE'] : vals('q15');
+
+      const code = k => (CARE_OPTIONS.find(o => o.key === k) || {}).code || '';
+      form.careType = code(form.q13);                       // A~D — 1순위 단독으로 확정
+      form.careTypeCombo = code(form.q13) + '-' + code(form.q14);
+      form.careTargetsAll = [form.q13, form.q14].concat(form.q15.filter(v => v !== 'NONE')).join(',');
+      goPage(5);
+    }
+
+    // ═══════════ STEP 5 · 돌봄 상황 ═══════════
+    function validateCareSituation() {
+      clearErrs('page-5');
+      let ok = true, firstBad = null;
+      ['q16', 'q17', 'q18', 'q20'].forEach(q => {
+        if (!val(q)) { showErr('err-' + q, true); ok = false; if (!firstBad) firstBad = 'err-' + q; }
+      });
+      if (vals('q19').length === 0) { showErr('err-q19', true); ok = false; if (!firstBad) firstBad = 'err-q19'; }
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.q16 = val('q16'); form.q17 = val('q17'); form.q18 = val('q18');
+      form.q19 = vals('q19').join(','); form.q20 = val('q20');
+      goPage(6);
+    }
+
+    // ═══════════ 척도 공통 검증 ═══════════
+    function validateScale(scaleName, count, next) {
+      const alertId = 'alert-' + scaleName;
+      let firstMissing = null;
+      for (let i = 0; i < count; i++) {
+        const row = document.querySelector(`[name="${scaleName}_${i}"]`)?.closest('.question-row');
+        if (answers[scaleName][i] === undefined) {
+          if (row) row.classList.add('unanswered');
+          if (!firstMissing && row) firstMissing = row;
+        } else {
+          if (row) row.classList.remove('unanswered');
+        }
+      }
+      if (firstMissing) {
+        $(alertId).classList.add('show');
+        firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      $(alertId).classList.remove('show');
+      if (typeof next === 'function') next(); else goPage(next);
+    }
+
+    // ═══════════ STEP 7-4 · 안전 확인 문항 (조건부) ═══════════
+    // NDS 3번 문항('죽고 싶다')에 2점 또는 3점으로 응답한 경우에만 노출
+    function needSafety() {
+      return answers.depression[2] >= 2;
+    }
+
+    function afterStress() {
+      validateScale('stress', 11, function () {
+        if (needSafety()) { safetyShown = true; goPage(10); }
+        else { safetyShown = false; goPage(11); }
+      });
+    }
+
+    function backFromParticipation() {
+      goPage(safetyShown ? 10 : 9);
+    }
+
+    function riskLevel(s1, s2, s3, s4) {
+      if (s3 === '2' || s4 === '3' || (s1 === '3' && s2 === '3')) return '높음';
+      if (s2 === '3' || s1 === '3' || s4 === '2') return '중간';
+      return '낮음';
+    }
+
+    function validateSafety() {
+      clearErrs('page-10');
+      let ok = true, firstBad = null;
+      ['s1', 's2', 's3', 's4'].forEach(q => {
+        if (!val(q)) { showErr('err-' + q, true); ok = false; if (!firstBad) firstBad = 'err-' + q; }
+      });
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.s1 = val('s1'); form.s2 = val('s2'); form.s3 = val('s3'); form.s4 = val('s4');
+      form.riskLevel = riskLevel(form.s1, form.s2, form.s3, form.s4);
+
+      if (form.riskLevel === '높음') {
+        $('crisis-alert').innerHTML = `
+          <div class="crisis-box">
+            <span class="crisis-title">지금 많이 힘드신 상황으로 보입니다. 혼자 견디지 않으셔도 됩니다.</span>
+            지금 바로 이야기 나눌 수 있는 곳이 있습니다.
+            <span class="hotline">· 자살예방상담전화 <a href="tel:109">109</a> (24시간)<br>
+            · 정신건강상담전화 <a href="tel:15770199">1577-0199</a> (24시간)</span>
+            <p style="margin-top:0.6rem;">신청은 정상적으로 접수되며, 저희 담당자가 오늘 중으로 연락드리겠습니다.
+            급하실 때는 <a href="tel:18770410"><b>1877-0410</b></a>으로 먼저 연락 주셔도 됩니다.</p>
+          </div>`;
+        $('crisis-alert').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // 위기 안내를 충분히 읽을 수 있도록 자동 이동하지 않고, 한 번 더 누를 때 넘어간다
+        if (!form.crisisShown) { form.crisisShown = true; return; }
+      }
+      goPage(11);
+    }
+
+    // ═══════════ STEP 8 · 참여 유형 ═══════════
+    // 노출 순서: Q21(유형) → Q21-1/Q21-2(선택 이유) → Q21-3·Q21-4(녹음 동의) → Q22~Q26(집단 조건)
+    // 녹음 동의를 집단 조건보다 먼저 받아, 동의하지 않는 분이 조건을 다 채운 뒤
+    // 참여 불가를 마주하는 순서를 피한다.
+
+    function renderReasonList(wrapId, name, list, etcVal, countId, etcId) {
+      const wrap = $(wrapId);
+      wrap.innerHTML = list.map((o, i) => `
+        <div class="choice">
+          <input type="checkbox" name="${name}" id="${name}-${o.v}" value="${o.v}"
+                 onchange="onReasonChange('${name}','${etcVal}','${countId}','${etcId}')">
+          <label for="${name}-${o.v}">${o.t}</label>
+        </div>`).join('');
+    }
+
+    // 최대 2개까지만 선택할 수 있도록 나머지 선택지를 비활성화한다
+    function onReasonChange(name, etcVal, countId, etcId) {
+      const boxes = Array.from(document.querySelectorAll(`input[name="${name}"]`));
+      const picked = boxes.filter(c => c.checked);
+      boxes.forEach(c => { c.disabled = picked.length >= 2 && !c.checked; });
+      $(countId).textContent = picked.length >= 2
+        ? '2 / 2개 선택 — 2개까지 선택하실 수 있습니다'
+        : `${picked.length} / 2개 선택`;
+
+      const etcOn = picked.some(c => c.value === etcVal);
+      $(etcId).style.display = etcOn ? 'block' : 'none';
+      if (!etcOn) $(etcId).value = '';
+
+      // Q21-1 ⑦(집단상담을 잘 몰라서) 선택 시 안내 문자 발송 안내를 노출
+      if (name === 'q21a') {
+        $('q21a-info7').style.display = picked.some(c => c.value === '7') ? 'block' : 'none';
+      }
+      if (picked.length) showErr('err-' + name, false);
+    }
+
+    function clearReasonList(name, etcId, countId) {
+      document.querySelectorAll(`input[name="${name}"]`).forEach(c => {
+        c.checked = false;
+        c.disabled = false;
+      });
+      $(etcId).value = '';
+      $(etcId).style.display = 'none';
+      $(countId).textContent = '0 / 2개 선택';
+      if (name === 'q21a') $('q21a-info7').style.display = 'none';
+    }
+
+    function clearGroupAnswers() {
+      document.querySelectorAll('input[name="q22"], input[name="q23"], input[name="q25"]')
+        .forEach(c => { c.checked = false; });
+      document.querySelectorAll('input[name="q24"], input[name="q26"]')
+        .forEach(c => { c.checked = false; });
+      $('q25-all').checked = false;
+      $('q25-block').style.display = 'none';
+      $('weekday-warn').style.display = 'none';
+      $('site-one-warn').style.display = 'none';
+    }
+
+    function onQ21Change() {
+      showErr('err-q21', false);
+      const v = val('q21');
+      const isGroup = (v === '2' || v === '3');
+
+      // Q21 = ① — 미선택 사유만 묻고 STEP 9로 이동 (녹음 문구는 어디에도 보이지 않게 한다)
+      $('q21a-block').style.display = v === '1' ? 'block' : 'none';
+      // Q21 = ② — 선택 사유. Q21 = ③(둘 다 상관없음)은 두 문항 모두 미노출
+      $('q21b-block').style.display = v === '2' ? 'block' : 'none';
+      // Q21 = ② 또는 ③ — 녹음 안내·동의
+      $('rec-block').style.display = isGroup ? 'block' : 'none';
+
+      if (v === '1') {
+        clearReasonList('q21b', 'q21b-etc-text', 'q21b-count');
+        $('rec-consent').checked = false;
+        clearGroupAnswers();
+      } else {
+        clearReasonList('q21a', 'q21a-etc-text', 'q21a-count');
+        form.switchedByRec = 'FALSE';
+      }
+      showErr('err-rec', false);
+      onRecConsentChange();
+    }
+
+    // 녹음에 동의해야 집단 조건 문항(Q22~Q26)이 열린다
+    function onRecConsentChange() {
+      const v = val('q21');
+      const open = (v === '2' || v === '3') && $('rec-consent').checked;
+      $('group-block').style.display = open ? 'block' : 'none';
+      if (open) showErr('err-rec', false);
+      else clearGroupAnswers();
+    }
+
+    function openRecModal() { $('rec-modal').classList.add('show'); }
+    function closeRecModal() { $('rec-modal').classList.remove('show'); }
+
+    // 녹음 미동의 → 유형 1(1:1 5회)로 전환. 집단 관련 문항은 전부 미노출로 되돌린다.
+    function switchToType1(byRec) {
+      closeRecModal();
+      $('q21-1').checked = true;
+      if (byRec) form.switchedByRec = 'TRUE';
+      $('rec-consent').checked = false;
+      onQ21Change();
+      showErr('err-rec', false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function onQ24Change() {
+      showErr('err-q24', false);
+      const v = val('q24');
+      $('q25-block').style.display = (v === '1' || v === '3') ? 'block' : 'none';
+      if (v === '2') {
+        document.querySelectorAll('input[name="q25"]').forEach(c => { c.checked = false; });
+        $('q25-all').checked = false;
+      } else {
+        renderRegionHint();
+      }
+    }
+
+    function toggleAllSites(el) {
+      document.querySelectorAll('input[name="q25"]').forEach(c => { c.checked = el.checked; });
+      onSiteChange(true);
+    }
+
+    function onSiteChange(fromAll) {
+      const boxes = Array.from(document.querySelectorAll('input[name="q25"]'));
+      if (!fromAll) $('q25-all').checked = boxes.every(c => c.checked);
+      const n = boxes.filter(c => c.checked).length;
+      $('site-one-warn').style.display = n === 1 ? 'block' : 'none';
+      if (n > 0) showErr('err-q25', false);
+    }
+
+    // 거주 자치구에 따라 가까운 후보 장소를 안내
+    function renderRegionHint() {
+      const d = form.district || '';
+      let region = '', site = '';
+      Object.keys(REGION_MAP).forEach(r => {
+        if (REGION_MAP[r].d.indexOf(d) > -1) { region = r; site = REGION_MAP[r].site; }
+      });
+      const box = $('region-hint');
+      if (!region) {
+        box.innerHTML = '💬 네 곳 모두 지하철로 이동하기 편한 곳에 있습니다. 이동이 어려우시면 앞 문항에서 <b>비대면(화상)</b>을 선택해 주세요.';
+      } else {
+        box.innerHTML = `💬 <b>${d}</b>는 <b>${region}</b>입니다. 가까운 후보 장소는 <b>${site}</b>입니다.<br>가능한 곳을 여러 곳 선택하실수록 참석 가능한 날짜로 편성해 드리기 쉬워집니다.`;
+      }
+    }
+
+    // 평일만 + 낮 시간대만 선택한 조합은 편성 실패 가능성이 높아 안내 문구를 노출
+    function checkWeekdayMix() {
+      const days = vals('q22');
+      const times = vals('q23');
+      if (days.length) showErr('err-q22', false);
+      if (times.length) showErr('err-q23', false);
+      const weekendPicked = days.indexOf('토') > -1 || days.indexOf('일') > -1;
+      const onlyDay = times.length === 1 && times[0] === '낮';
+      $('weekday-warn').style.display = (days.length && !weekendPicked && onlyDay) ? 'block' : 'none';
+    }
+
+    function validateParticipation() {
+      clearErrs('page-11');
+      if (!val('q21')) { showErr('err-q21', true); focusErr('err-q21'); return; }
+      form.q21 = val('q21');
+
+      // Q21 = ① — 미선택 사유(Q21-1)만 받고 STEP 9로 이동
+      if (form.q21 === '1') {
+        const declined = vals('q21a');
+        if (declined.length === 0) { showErr('err-q21a', true); focusErr('err-q21a'); return; }
+        form.q21decline = declined.join(',');
+        form.q21declineEtc = declined.indexOf('9') > -1 ? $('q21a-etc-text').value.trim() : '';
+        form.q21choose = ''; form.q21chooseEtc = '';
+        form.recConsent = '';
+        form.q22 = ''; form.q23 = ''; form.q24 = ''; form.q25 = ''; form.q26 = '';
+        form.groupBarrierFlag = 'FALSE';
+        goPage(12);
+        return;
+      }
+
+      // Q21 = ② — 선택 사유(Q21-2). Q21 = ③은 두 사유 문항 모두 미노출
+      form.q21decline = ''; form.q21declineEtc = '';
+      if (form.q21 === '2') {
+        const chosen = vals('q21b');
+        if (chosen.length === 0) { showErr('err-q21b', true); focusErr('err-q21b'); return; }
+        form.q21choose = chosen.join(',');
+        form.q21chooseEtc = chosen.indexOf('8') > -1 ? $('q21b-etc-text').value.trim() : '';
+      } else {
+        form.q21choose = ''; form.q21chooseEtc = '';
+      }
+
+      // Q21-4 — 녹음 동의는 집단상담 참여의 필수 요건.
+      // 강제로 이동시키지 않고 안내 모달에서 유형 1 전환 여부를 선택하게 한다.
+      if (!$('rec-consent').checked) {
+        showErr('err-rec', true);
+        openRecModal();
+        return;
+      }
+      form.recConsent = 'Y';
+
+      let ok = true, firstBad = null;
+      if (vals('q22').length === 0) { showErr('err-q22', true); ok = false; firstBad = firstBad || 'err-q22'; }
+      if (vals('q23').length === 0) { showErr('err-q23', true); ok = false; firstBad = firstBad || 'err-q23'; }
+      if (!val('q24')) { showErr('err-q24', true); ok = false; firstBad = firstBad || 'err-q24'; }
+      const needSite = val('q24') === '1' || val('q24') === '3';
+      if (needSite && vals('q25').length === 0) { showErr('err-q25', true); ok = false; firstBad = firstBad || 'err-q25'; }
+      if (!val('q26')) { showErr('err-q26', true); ok = false; firstBad = firstBad || 'err-q26'; }
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.q22 = vals('q22').join(',');
+      form.q23 = vals('q23').join(',');
+      form.q24 = val('q24');
+      form.q25 = needSite ? vals('q25').join(',') : '';
+      form.q26 = val('q26');
+      form.groupBarrierFlag = form.q26 === '3' ? 'TRUE' : 'FALSE';
+      goPage(12);
+    }
+
+    // ═══════════ STEP 9 · 상담 신청 이유 ═══════════
+    // Q27 선택지는 Q12(취업 여부) 응답에 따라 달라지므로, Q12가 바뀌었을 때만 다시 그린다
+    let q27RenderedFor = null;
+
+    function ensureQ27() {
+      if (q27RenderedFor === form.q12) return;
+      renderQ27();
+      q27RenderedFor = form.q12;
+      onQ27Change();
+    }
+
+    function renderQ27() {
+      // Q12 = ④(일을 하고 있지 않음) 응답자에게는 ④·⑨ 선택지를 노출하지 않음
+      const hide = form.q12 === '4' ? ['4', '9'] : [];
+      const draw = (wrapId, list) => {
+        const wrap = $(wrapId);
+        wrap.innerHTML = '';
+        list.filter(o => hide.indexOf(o.v) === -1).forEach(o => {
+          wrap.insertAdjacentHTML('beforeend', `
+            <div class="choice">
+              <input type="checkbox" name="q27" id="q27-${o.v}" value="${o.v}" onchange="onQ27Change()">
+              <label for="q27-${o.v}">${o.t}</label>
+            </div>`);
+        });
+      };
+      draw('q27-care', Q27_CARE);
+      draw('q27-other', Q27_OTHER);
+    }
+
+    function onQ27Change() {
+      const picked = vals('q27');
+      $('q27-count').textContent = picked.length + ' / 3개 선택' + (picked.length >= 3 ? ' — 3개까지 선택하실 수 있습니다' : '');
+      document.querySelectorAll('input[name="q27"]').forEach(c => {
+        c.disabled = picked.length >= 3 && !c.checked;
+      });
+      $('q27-etc-text').style.display = picked.indexOf('14') > -1 ? 'block' : 'none';
+      if (picked.length) showErr('err-q27', false);
+      renderQ28(picked);
+    }
+
+    // Q27에서 선택한 항목만 Q28 선택지로 노출. 1개만 선택한 경우 Q28은 자동 확정하고 노출하지 않음
+    function renderQ28(picked) {
+      const all = Q27_CARE.concat(Q27_OTHER);
+      const block = $('q28-block');
+      const wrap = $('q28-list');
+      if (picked.length <= 1) {
+        block.style.display = 'none';
+        wrap.innerHTML = '';
+        return;
+      }
+      block.style.display = 'block';
+      const prev = val('q28');
+      wrap.innerHTML = '';
+      picked.forEach(v => {
+        const o = all.find(x => x.v === v);
+        const checked = prev === v ? 'checked' : '';
+        wrap.insertAdjacentHTML('beforeend', `
+          <div class="choice">
+            <input type="radio" name="q28" id="q28-${v}" value="${v}" ${checked} onchange="showErr('err-q28', false)">
+            <label for="q28-${v}">${o.t}</label>
+          </div>`);
+      });
+    }
+
+    function onQ31Change() {
+      showErr('err-q31', false);
+      // Q31 = ①(대면)일 때만 방문 권역(Q32)을 묻는다
+      $('q32-block').style.display = val('q31') === '1' ? 'block' : 'none';
+    }
+
+    function validateReason() {
+      clearErrs('page-12');
+      let ok = true, firstBad = null;
+      const picked = vals('q27');
+      if (picked.length === 0) { showErr('err-q27', true); ok = false; firstBad = 'err-q27'; }
+      if (picked.length > 1 && !val('q28')) { showErr('err-q28', true); ok = false; firstBad = firstBad || 'err-q28'; }
+      ['q29', 'q30', 'q31'].forEach(q => {
+        if (!val(q)) { showErr('err-' + q, true); ok = false; firstBad = firstBad || 'err-' + q; }
+      });
+      if (val('q31') === '1' && !val('q32')) { showErr('err-q32', true); ok = false; firstBad = firstBad || 'err-q32'; }
+      if (vals('q34').length === 0) { showErr('err-q34', true); ok = false; firstBad = firstBad || 'err-q34'; }
+      if (!ok) { focusErr(firstBad); return; }
+
+      form.q27 = picked.join(',');
+      form.q27etc = picked.indexOf('14') > -1 ? $('q27-etc-text').value.trim() : '';
+      form.q28 = picked.length === 1 ? picked[0] : val('q28');
+      form.q29 = val('q29');
+      form.q30 = val('q30');
+      form.q31 = val('q31');
+      form.q32 = val('q31') === '1' ? val('q32') : '';
+      form.q34 = vals('q34').join(',');
+      form.q35 = $('q35-text').value.trim();
+      goPage(13);
+    }
+
+    // ═══════════ STEP 10 · 최종 확인 ═══════════
+    function labelOf(list, v) {
+      const o = list.find(x => x.v === v);
+      return o ? o.t.replace(/<[^>]+>/g, '') : '';
+    }
+
+    function buildSummary() {
+      const care = k => (CARE_OPTIONS.find(o => o.key === k) || {}).short || '-';
+      const q21Label = { '1': '유형 1 — 1:1 상담 5회', '2': '유형 2 — 1:1 상담 3회 + 집단상담 1회', '3': '둘 다 상관없음' };
+      const q31Label = { '1': '대면 상담', '2': '화상 상담', '3': '전화 상담', '4': '상관없음' };
+      const all = Q27_CARE.concat(Q27_OTHER);
+
+      const rows = [
+        ['성명', form.name, 3],
+        ['휴대전화번호', form.phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'), 3],
+        ['거주 자치구', form.district, 3],
+        ['주된 돌봄 대상', care(form.q13) + ' (1순위)', 4],
+        ['추가 돌봄 대상', care(form.q14) + ' (2순위)', 4],
+        ['참여 유형', q21Label[form.q21] || '-', 11],
+        ['1:1 상담 방식', q31Label[form.q31] || '-', 12],
+        ['1:1 가능 시간대', (form.q34 || '-').replace(/,/g, ', '), 12],
+        ['가장 먼저 다루고 싶은 것', labelOf(all, form.q28) || '-', 12]
+      ];
+      if (form.q21 !== '1') {
+        rows.splice(6, 0, ['집단상담 녹음 동의', form.recConsent === 'Y' ? '동의함' : '-', 11]);
+        rows.splice(7, 0, ['집단상담 가능 요일', (form.q22 || '-').replace(/,/g, ', '), 11]);
+        rows.splice(8, 0, ['집단상담 가능 시간', (form.q23 || '-').replace(/,/g, ', '), 11]);
+        if (form.q25) rows.splice(9, 0, ['집단상담 가능 장소', form.q25.replace(/,/g, ', '), 11]);
+      }
+
+      $('summary-list').innerHTML = rows.map(r => `
+        <div class="summary-row">
+          <span class="k">${r[0]}</span>
+          <span class="v">${r[1] || '-'}</span>
+          <button class="edit" onclick="goPage(${r[2]})">수정</button>
+        </div>`).join('');
+    }
+
+    // ===== 채점 =====
+    function calcScore(scaleName) {
+      return Object.values(answers[scaleName]).reduce((sum, v) => sum + v, 0);
+    }
+
+    function getDepLevel(score) {
+      if (score <= 8) return { label: '정상', level: 'normal', max: 36, currentState: '우울 증상이 거의 관찰되지 않는 매우 안정적인 상태입니다. 일상생활의 흥미와 에너지를 건강하게 잘 유지하고 있습니다.', tip: '마음의 근력을 튼튼하게 지켜가기 위해, 오늘 하루 중 편안했던 순간이나 감사한 일을 짧게 기록하며 긍정적인 감각을 저축해 보세요.' };
+      if (score <= 18) return { label: '경증 수준의 우울', level: 'mild', max: 36, currentState: '에너지가 서서히 줄어들고 일상의 흥미가 옅어지는 시기입니다.', tip: '무기력을 \'게으름\'으로 탓하지 마세요. 감기 기운이 있을 때 쉬어야 하듯, 마음의 배터리가 방전되고 있다는 자연스러운 신호입니다. 물 한 잔 마시기, 창문 열기처럼 아주 사소한 일부터 나의 속도에 맞춰 작은 성취를 쌓아보세요.' };
+      if (score <= 28) return { label: '중등도 수준의 우울', level: 'moderate', max: 36, currentState: '혼자서 감정을 조절하고 일상을 유지하는 데 벅참을 느끼는 상태입니다.', tip: '복잡한 결정이나 책임은 잠시 미뤄두고, 오직 \'오늘 하루의 기본적인 식사와 수면\'을 지켜내는 데만 에너지를 집중해 주세요. 전문가와의 안전한 대화가 필요한 시점입니다.' };
+      return { label: '중증 수준의 우울', level: 'severe', max: 36, currentState: '깊은 우울감이 삶을 압도하여 즉각적인 보호와 돌봄이 필요한 상태입니다.', tip: '지금의 고통은 결코 의지가 약해서가 아닙니다. 혼자서 견뎌내려 하지 마시고, 반드시 전문의 진료나 심리상담을 통해 안전하게 마음의 무게를 나누어 주시길 권해드립니다.' };
+    }
+
+    function getAnxLevel(score) {
+      if (score <= 9) return { label: '정상', level: 'normal', max: 33, currentState: '과도한 불안이나 신체적 긴장감이 거의 없는 편안한 상태입니다.', tip: '따뜻한 차를 마시며 온기를 느끼거나, 좋아하는 향기를 맡는 등 일상에서 오감을 깨우는 습관은 내면의 평온함을 더욱 깊고 단단하게 만들어줍니다.' };
+      if (score <= 16) return { label: '경증 수준의 불안', level: 'mild', max: 33, currentState: '아직 일어나지 않은 일에 대한 걱정이 늘어나고, 몸의 긴장도가 높아진 상태입니다.', tip: '턱이나 어깨에 나도 모르게 꽉 힘이 들어가 있지 않은지 가만히 점검해 보세요. 불안은 생각으로 통제하기보다, 호흡을 길게 내쉬며 몸의 힘을 툭 풀어낼 때 오히려 쉽게 가라앉습니다.' };
+      if (score <= 24) return { label: '중등도 수준의 불안', level: 'moderate', max: 33, currentState: '꼬리를 무는 걱정과 신체적 불편함(두근거림, 수면 문제 등)이 일상의 질을 떨어뜨리는 상태입니다.', tip: '불안이라는 감정을 억지로 몰아내려 애쓰지 마세요. \'아, 내 마음이 나를 보호하려고 지금 비상벨을 세게 울리고 있구나\'라고 한 걸음 떨어져서 바라보는 연습이 필요합니다.' };
+      return { label: '중증 수준의 불안', level: 'severe', max: 33, currentState: '통제하기 힘든 극심한 두려움과 긴장으로 에너지가 심하게 고갈된 상태입니다.', tip: '불안의 파도 속에서 무방비로 휩쓸리지 않도록, 나침반이 되어줄 전문가의 도움이 필요합니다. 주저하지 마시고 안전한 상담을 시작해 보세요.' };
+    }
+
+    function getStressLevel(score) {
+      if (score <= 10) return { label: '낮은 수준의 스트레스', level: 'normal', max: 33, currentState: '일상적인 스트레스나 자극을 유연하게 소화할 수 있는 대처 자원이 충분한 상태입니다.', tip: '스트레스는 삶의 자연스러운 일부입니다. 지금처럼 꾸준한 취미나 가벼운 신체 활동을 통해 에너지를 순환시키는 나만의 회복 루틴을 계속 지켜나가 주세요.' };
+      if (score <= 20) return { label: '중등도 이상의 스트레스', level: 'mild', max: 33, currentState: '현재 마주한 상황들이 내가 감당할 수 있는 한계치를 서서히 넘어서고 있는 상태입니다.', tip: '외부의 기대나 타인의 감정을 내 것처럼 떠안고 있지 않은지 돌아볼 때입니다. 내가 통제할 수 없는 몫은 과감히 내려놓고, 나와 타인 사이에 건강한 마음의 경계선을 세우는 연습을 해보세요.' };
+      return { label: '매우 높은 수준의 스트레스', level: 'severe', max: 33, currentState: '만성적이고 극심한 스트레스로 인해 감정 조절이 어려워지기 쉬운 상태입니다.', tip: '엔진이 과열되었을 때는 멈추는 것이 유일한 해결책입니다. 주변의 자극으로부터 잠시 차단된, 오직 나 자신만을 위한 온전한 휴식이 필요한 시점입니다.' };
+    }
+
+    function buildResultCard(title, badge, score, scoreInfo) {
+      const pct = Math.round((score / scoreInfo.max) * 100);
+      return `
+    <div class="result-card level-${scoreInfo.level}">
+      <div class="result-card-header">
+        <span class="result-card-title">${badge} · ${title}</span>
+      </div>
+      <div class="result-card-body">
+        <div class="score-display">
+          <span class="score-num">${score}</span>
+          <span class="score-max">/ ${scoreInfo.max}점</span>
+        </div>
+        <div class="score-label">${scoreInfo.label}</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill" style="width: ${pct}%"></div>
+        </div>
+        <div class="interp-current">
+          <p class="interp-heading">현재 상태</p>
+          <p>${scoreInfo.currentState}</p>
+        </div>
+        <div class="score-interpretation">
+          <p class="interp-heading">마음 관리 팁</p>
+          <p>${scoreInfo.tip}</p>
+        </div>
+      </div>
+    </div>`;
+    }
+
+    // ===== DB 전송 =====
+    const SUBMIT_URL = 'submit.php';
+
+    async function sendToServer(payload) {
+      try {
+        const res = await fetch(SUBMIT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return true;
+      } catch (e) {
+        console.warn('DB 전송 실패:', e);
+        return false;
+      }
+    }
+
+    function showOverlay(text) {
+      $('sending-text').textContent = text;
+      $('sending-overlay').classList.add('show');
+    }
+    function hideOverlay() {
+      $('sending-overlay').classList.remove('show');
+    }
+
+    // ===== 제출 =====
+    async function submitApplication() {
+      const agreed = Array.from(document.querySelectorAll('.final-agree')).every(c => c.checked);
+      if (!agreed) { showErr('err-final', true); focusErr('err-final'); return; }
+      showErr('err-final', false);
+
+      showOverlay('신청을 접수하는 중입니다');
+      await new Promise(r => setTimeout(r, 700));
+
+      const dScore = calcScore('depression');
+      const aScore = calcScore('anxiety');
+      const sScore = calcScore('stress');
+      const bScore = calcScore('burden');
+      const dInfo = getDepLevel(dScore);
+      const aInfo = getAnxLevel(aScore);
+      const sInfo = getStressLevel(sScore);
+
+      const now = new Date();
+      const dateStr = `${now.getFullYear()}. ${now.getMonth() + 1}. ${now.getDate()}. ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+      const rowId = `${Date.now()}_${form.name}`;
+
+      $('result-name-display').textContent = form.name + ' 님';
+      $('result-cards-wrap').innerHTML =
+        buildResultCard('우울 척도', 'NDS', dScore, dInfo) +
+        buildResultCard('불안 척도', 'NAS', aScore, aInfo) +
+        buildResultCard('스트레스 척도', 'NSS', sScore, sInfo);
+
+      const payload = {
+        rowId,
+        timestamp: dateStr,
+        name: form.name,
+        phone: form.phone,
+        email: form.email || '',
+        gender: form.gender,
+        birthYear: form.birth,
+        district: form.district,
+        employment: form.q12,
+        eligible: form.eligible,
+        eligibilityAnswers: [form.q1, form.q2, form.q3, form.q4, form.q5].join(','),
+        careType: form.careType,
+        careTypeCombo: form.careTypeCombo,
+        careTargetsAll: form.careTargetsAll,
+        careCount: form.q16,
+        careCohabit: form.q17,
+        careHours: form.q18,
+        careForms: form.q19,
+        careSupport: form.q20,
+        burdenScore: bScore,
+        burdenAnswers: Object.keys(answers.burden).sort((a, b) => a - b).map(k => answers.burden[k]).join(','),
+        depressionScore: dScore,
+        anxietyScore: aScore,
+        stressScore: sScore,
+        safetyAnswers: safetyShown ? [form.s1, form.s2, form.s3, form.s4].join(',') : '',
+        suicideRisk: safetyShown ? form.riskLevel : '낮음',
+        groupAssignment: form.q21,
+        groupPrefDays: form.q22 || '',
+        groupPrefTime: form.q23 || '',
+        groupPrefMode: form.q24 || '',
+        groupPrefSite: form.q25 || '',
+        groupBarrierFlag: form.groupBarrierFlag || 'FALSE',
+        groupDeclineReason: form.q21decline || '',
+        groupDeclineEtc: form.q21declineEtc || '',
+        groupChooseReason: form.q21choose || '',
+        groupChooseEtc: form.q21chooseEtc || '',
+        recConsentPre: form.recConsent || '',
+        switchedByRec: form.switchedByRec || 'FALSE',
+        reasonAll: form.q27,
+        reasonEtc: form.q27etc || '',
+        reasonPrimary: form.q28,
+        careAttribution: form.q29,
+        priorCounseling: form.q30,
+        counselMode: form.q31,
+        counselRegion: form.q32 || '',
+        counselTime: form.q34,
+        freeText: form.q35 || ''
+      };
+      await sendToServer(payload);
+
+      goPage(14);
+      // 접수가 끝났으므로 브라우저에 남은 임시 저장본을 즉시 폐기
+      try { localStorage.removeItem(DRAFT_KEY); } catch (e) { }
+      hideOverlay();
+    }
+
+    // ===== INIT =====
+    initSelects();
+    renderQ13();
+    renderQ15();
+    renderReasonList('q21a-list', 'q21a', Q21_DECLINE, '9', 'q21a-count', 'q21a-etc-text');
+    renderReasonList('q21b-list', 'q21b', Q21_CHOOSE, '8', 'q21b-count', 'q21b-etc-text');
+    renderQuestions('burden-questions', burdenItems, 'burden', 5);
+    renderQuestions('depression-questions', depressionItems, 'depression');
+
+    document.querySelectorAll('.step-btn').forEach(btn => {
+      btn.classList.toggle('locked', parseInt(btn.dataset.page, 10) > maxReached);
+    });
+    $('progress-fill').style.width = '10%';
+
+    // 입력이 바뀔 때마다 임시 저장 (동적으로 그려지는 선택지까지 잡히도록 위임 방식)
+    const pageWrap = document.querySelector('.page-wrap');
+    pageWrap.addEventListener('change', queueSaveDraft);
+    pageWrap.addEventListener('input', queueSaveDraft);
+    window.addEventListener('pagehide', saveDraft);
+
+    initDraft();
+
+  </script>
+</body>
+
+</html>
